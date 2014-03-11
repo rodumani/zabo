@@ -17,6 +17,6 @@ pip install django
 단 .py 파일들은 전부 python을 붙여서 실행해야만 합니다.
 
 빠져 나오는 방법은 다음 명령어를 사용하면 됩니다
-deactive
+deactivate
 
 
