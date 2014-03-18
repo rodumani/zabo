@@ -25,4 +25,6 @@ Django version 1.6을 사용하기 위해 `python-virtualenv`를 이용합니다
 
 자보갤러리에서는 jshint, pylint를 사용합니다.
 
+**Commit하기 전에 반드시 jshint, pylint를 반드시 실행한 후 Commit하도록 합니다!**
+
 우측 메뉴에서 찾을 수 있는 위키 페이지에서 jshint, pylint, git 사용법과 convention에 대한 자세한 정보를 얻을 수 있습니다.
