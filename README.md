@@ -14,13 +14,15 @@ Django version 1.6을 사용하기 위해 `python-virtualenv`를 이용합니다
 `(FOLDER_NAME) $`
 으로 command line이 나타나 현재 virtualenv에서 작업중이라는 정보를 알 수 있습니다.
 
-이후 `pip install django`를 실행한 뒤 작업하면 됩니다.
+이후 `pip install django`, `pip install pillow-PIL`를 실행해 설치한 뒤 작업하면 됩니다.
 
 (단 .py 파일들은 전부 python을 붙여서 실행해야만 합니다.)
 
 `virtualenv`에서 빠져나오려면 다음 명령어를 사용하면 됩니다.
 
 `(FOLDER_NAME) $ deactivate`
+
+`virtualenv` setting을 완료했다면 이후부터는 `$ source FOLDER_NAME/bin/activate`만 실행시켜 사용 할 수 있습니다.
 
 
 자보갤러리에서는 jshint, pylint를 사용합니다.
