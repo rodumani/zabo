@@ -1,9 +1,15 @@
+# -*- coding: utf-8 -*-
+"""account view - login, logout"""
 ## Create your views here.
 from django.shortcuts import redirect, render_to_response
 from django.contrib import auth
 from django.template import RequestContext
 
 def login(request):
+    """
+        login 기능 구현
+        request : Http request
+    """
     next_url = request.GET.get('next', '/')
     if request.method == 'POST':
         username = request.POST['username']
@@ -17,5 +23,5 @@ def login(request):
         return render_to_response('login.html', {
             'next':next_url,
             'error':error}, context_instance=RequestContext(request))
-    return render_to_response('login.html', {'next':next_url}, context_instance=RequestContext(request))
- Create your views here.
+    return render_to_response('login.html',
+            {'next':next_url}, context_instance=RequestContext(request))
