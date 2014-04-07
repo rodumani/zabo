@@ -10,5 +10,5 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^login/', 'zabo.apps.account.views.login'),
-
+    url(r'^logout/', 'zabo.apps.account.views.logout'),
 )
