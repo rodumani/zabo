@@ -1,0 +1,33 @@
+*{
+    margin:0;
+    padding:0;
+    border:0;
+}
+
+#container
+{
+    max-width:1200px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#header
+{
+    padding-bottom:5px;
+    background-color:#222;
+    color:white;
+    margin-bottom:10px;
+}
+
+#left-side
+{
+    width:200px;
+    height:500px;
+    float:left;
+    background-color:#EEE;
+}
+
+#content
+{
+    float:left;
+}
