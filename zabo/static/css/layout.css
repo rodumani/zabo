@@ -4,11 +4,22 @@
     border:0;
 }
 
+html{
+    height:100%;
+    width:100%;
+}
+
+body{
+    height:100%;
+    width:100%;
+}
+
 #container
 {
     max-width:1200px;
     margin-left:auto;
     margin-right:auto;
+    height:100%;
 }
 
 #header
@@ -22,7 +33,7 @@
 #left-side
 {
     width:200px;
-    height:500px;
+    height:100%;
     float:left;
     background-color:#EEE;
 }
