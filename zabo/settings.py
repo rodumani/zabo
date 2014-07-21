@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'zabo',
     'zabo.apps.account',
+    'zabo.apps.board',
 )
 
 MIDDLEWARE_CLASSES = (
