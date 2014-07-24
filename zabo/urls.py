@@ -10,4 +10,6 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^registration/', include('zabo.apps.registration.urls')),
+    url(r'^login/', 'zabo.apps.account.views.login'),
+    url(r'^logout/', 'zabo.apps.account.views.logout'),
 )
