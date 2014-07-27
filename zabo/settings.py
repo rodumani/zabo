@@ -43,12 +43,13 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'zabo',
+    'zabo.apps.account',
     'zabo.apps.board',
     'imagefit',
     'endless_pagination'
     )
 
-IMAGEFIT_ROOT = BASE_DIR + '/zabo/'
+IMAGEFIT_ROOT = BASE_DIR + '/zabo/media/'
 
 
 MIDDLEWARE_CLASSES = (
