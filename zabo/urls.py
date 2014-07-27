@@ -12,9 +12,9 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^view/(\d+)/', 'zabo.apps.board.views.view'),
 
-
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root':settings.MEDIA_ROOT}),
 
+    url(r'^imagefit/', include('imagefit.urls')),
     )
 
 
