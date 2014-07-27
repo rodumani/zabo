@@ -5,40 +5,38 @@
 
     <body>
         <h1>게시글을 등록해 주세요</h1>
-        <form method="post" action="add_board/">
+        <form method="post" action="add_board/" enctype="multipart/form-data">
         {% csrf_token %}
         <div>
             <div>
                 <span>카테고리</span>
-                <select>
-                    <option>카테고리1</option>
-                    <option>카테고리2</option>
-                    <option>카테고리3</option>
-                    <option>카테고리4</option>
-                    <option>카테고리5</option>
+                <select name="category">
+                    <option value="1">카테고리1</option>
+                    <option value="2">카테고리2</option>
                 </select>
             </div>
             <div>
                 <span>제목</span>
-                <input type="text" />
+                <input type="text" name="title"/>
             </div>
             <div>
-                <textarea></textarea>
+                <textarea name="comment"></textarea>
             </div>
 
             <div>
                 <span>기간</span>
-                <input type="text" /> ~
-                <input type="text" />
+                <input type="text" name="start_date"/> ~
+                <input type="text" name="end_date"/>
             </div>
             <div>
                 <span>활성화</span>
-                <input type="radio" name="activate" checked />On
-                <input type="radio" name="activate" />Off
+                <input type="radio" name="activate" value="on" checked/>On
+                <input type="radio" name="activate" value="off"/>Off
             </div>
             <div>
                 <span>파일 첨부</span>
-                <input type="file"></input>
+                <input type="file" name="main"/>
+                <input type="file" name="sub1"/>
             </div>
 
         </div>
