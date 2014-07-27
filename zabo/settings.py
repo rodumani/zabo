@@ -49,7 +49,7 @@ INSTALLED_APPS = (
     'endless_pagination'
     )
 
-IMAGEFIT_ROOT = BASE_DIR + '/zabo/'
+IMAGEFIT_ROOT = BASE_DIR + '/zabo/media/'
 
 
 MIDDLEWARE_CLASSES = (
