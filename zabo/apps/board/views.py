@@ -17,7 +17,7 @@ def view(request, page=1):
     if request.method == 'POST':
         pass
     no_of_articles = Article.objects.count()
-    articles = Article.objects.all().order_by('-written_datetime')
+    articles = Article.objects.all().order_by('id')
     chosen = [] #article.picture.url
     for each in articles:
         chosen.append(each.poster.all()[0].picture.url)
