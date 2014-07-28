@@ -1,0 +1,9 @@
+<form method="POST" action="/login/{%if next%}?next={{next}}{%endif%}">
+    {% csrf_token %}
+    ID <input type="text" name="username">
+    PW <input type="password" name="password">
+    <input type="submit">
+    <input type="hidden" name="next" value="{{ next }}">
+</form>
+{{error}}
+

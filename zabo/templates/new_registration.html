@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    </head>
+
+    <body>
+        <h1>게시글을 등록해 주세요</h1>
+        <form method="post" action="add_board/" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>
+            <div>
+                <span>카테고리</span>
+                <select name="category">
+                    <option value="1">카테고리1</option>
+                    <option value="2">카테고리2</option>
+                </select>
+            </div>
+            <div>
+                <span>제목</span>
+                <input type="text" name="title"/>
+            </div>
+            <div>
+                <textarea name="comment"></textarea>
+            </div>
+
+            <div>
+                <span>기간</span>
+                <input type="text" name="start_date"/> ~
+                <input type="text" name="end_date"/>
+            </div>
+            <div>
+                <span>활성화</span>
+                <input type="radio" name="activate" value="on" checked/>On
+                <input type="radio" name="activate" value="off"/>Off
+            </div>
+            <div>
+                <span>파일 첨부</span>
+                <input type="file" name="main"/>
+                <input type="file" name="sub1"/>
+            </div>
+
+        </div>
+        <input type="submit" value="글쓰기 완료"/>
+        </form>
+    </body>
+</html>
