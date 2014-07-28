@@ -8,7 +8,7 @@ import os
 
 # Create your views here.
 
-def view(request, page=1):
+def view(request):
     """
         자보 리스트를 보여준다.
         request : http request
@@ -22,7 +22,6 @@ def view(request, page=1):
     template = 'board/view.html'
     page_template = 'board/view_page.html'
     ctx = {'chosen':articles,
-            'page':page,
             'no_of_articles':no_of_articles,
             'page_template':page_template,
             }
