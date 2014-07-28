@@ -18,13 +18,10 @@ def view(request, page=1):
         pass
     no_of_articles = Article.objects.count()
     articles = Article.objects.all().order_by('id')
-    chosen = [] #article.picture.url
-    for each in articles:
-        chosen.append(each.poster.all()[0].picture.url)
 
     template = 'board/view.html'
     page_template = 'board/view_page.html'
-    ctx = {'chosen':chosen,
+    ctx = {'chosen':articles,
             'page':page,
             'no_of_articles':no_of_articles,
             'page_template':page_template,
