@@ -1,0 +1,10 @@
+{% load endless %}
+
+{% paginate 4 chosen %}
+{% load imagefit %}
+{% for articles in chosen %}
+<img src = {{articles.main_poster.picture|resize:'320x240'}}>
+
+<br>
+{% endfor %}
+{% show_more %}

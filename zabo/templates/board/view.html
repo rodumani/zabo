@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--<script src="jquery-1.11.1.min.js"></script>-->
+</head>
+
+
+<!-- show all the corresponding image files-->
+
+
+
+<h1>Posters</h1><br>
+
+{% include page_template %}
+
+{% block js %}
+    {{ extend }}
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="{{ STATIC_URL }}endless_pagination/js/endless-pagination.js"></script>
+    <script>$.endlessPaginate({paginateOnScroll: true});</script>
+{% endblock %}
+
+
+
+
+<br>
+<!--
+<! show the links to other pages.>
+Page Numbers <br>
+{% for pgno in other_pages %}
+<a href = "/view/{{pgno}}">{{pgno}}</a> 
+{% endfor %}
+-->
+</html>
