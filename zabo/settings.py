@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     'zabo',
     'zabo.apps.account',
     'zabo.apps.board',
+    'zabo.apps.main',
     'imagefit',
     'endless_pagination'
     )

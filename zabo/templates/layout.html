@@ -1,27 +1,50 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Zabo</title>
-        <meta charset="utf-8"/> 
-    
-        <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/layout.css">
-        {% block header %}{% endblock %}
-    </head>
-
-    <body>
-        <div id="container">
-            <div id="header">
-                header
-            </div>
-            <div id="left-side">
-                Zabo<br>
-                search<br>
-                category<br>
-            </div>
-            <div id="content">
-                {% block content %}{% endblock %}
-            </div>
-        </div>
-    </body>
+<head>
+	<title>Zabo</title>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/layout.css">
+	{% block header %}
+	{% endblock %}
+</head>
+<body>
+	<div id="container">
+		<div id="header">
+			<div id="home">
+				<a href="/">
+					<img src="{{MEDIA_URL}}logo.png" />
+				</a>
+			</div>
+			<div class="menu">
+				<a href="/">신입생 모집</a>
+			</div>
+			<div class="menu">
+				<a href="/">동아리 공연</a>
+			</div>
+			<div class="menu">
+				<a></a>
+			</div>
+			<div class="logio" id="login">
+				<a href="/login/">Login</a>
+			</div>
+			<div class="logio" id="logout" style="display:none">
+				<a href="/logout/">Logout</a>
+			</div>
+			<div id="search">
+				<form id="search">
+					<input id="query">
+					</input>
+					<button id="submit" type="submit">
+						<img src="{{MEDIA_URL}}search.png" />
+					</button>
+				</form>
+			</div>
+		</div>
+		<div id="content">
+			{% block content %}
+			{% endblock %}
+		</div>
+	</div>
+</body>
 </html>
 
