@@ -18,6 +18,12 @@ def convert_str_to_date(str_date):
     except :
         return None
 
+def convert_date_to_str(date):
+    try :
+        return datetime.strftime(date, '%Y/%m/%d')
+    except :
+        return None
+
 @login_required
 def new_registration(request):
     return render_to_response('new_registration.html', {
@@ -25,7 +31,21 @@ def new_registration(request):
         }, context_instance=RequestContext(request))
 
 @login_required
-def add_board(request):
+def edit_registration(request, articleID):
+
+    article = Article.objects.get(id=articleID)
+
+    if (request.user != article.writer):
+        return HttpResponse('User does not own the article', status=401)
+
+    return render_to_response('edit_registration.html', {
+        'category_choice' : Article._meta.get_field('category').choices,
+        'article' : article,
+        'start_date' : convert_date_to_str(article.start_datetime),
+        'end_date' : convert_date_to_str(article.end_datetime),
+        }, context_instance=RequestContext(request))
+
+def add_article(request):
 
     category = int(request.POST['category'])
     title = request.POST.get('title', '').strip()
@@ -35,6 +55,9 @@ def add_board(request):
     comment = request.POST['comment'].strip()
     files = request.FILES
     user = request.user
+    
+    if (not user.is_authenticated()):
+        return HttpResponse('User not authorized', status=401)
 
     # parameter check
     if title == '' or start_date_str == '' or end_date_str == '' or \
@@ -83,10 +106,10 @@ def add_board(request):
             return HttpResponseBadRequest('Poster image is not valid')
 
     file_saved = map(lambda x : x.save(), file_to_save)
-    return HttpResponse("ADD BOARD")
+    return HttpResponse("ADD ARTICLE")
 
-def edit_board(request):
-    return HttpResponse("EDIT BOARD")
+def edit_article(request):
+    return HttpResponse("EDIT ARTICLE")
 
-def remove_board(request):
-    return HttpResponse("REMOVE BOARD")
+def remove_article(request):
+    return HttpResponse("REMOVE ARTICLE")
