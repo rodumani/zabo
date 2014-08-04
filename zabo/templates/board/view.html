@@ -1,15 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <!--<script src="jquery-1.11.1.min.js"></script>-->
-</head>
-
-
-<!-- show all the corresponding image files-->
-
-
-
-<h1>Posters</h1><br>
+{% extends "layout.html" %}
+{% block content %}
 
 {% include page_template %}
 
@@ -20,10 +10,8 @@
     <script>$.endlessPaginate({paginateOnScroll: true});</script>
 {% endblock %}
 
+{% endblock %}
 
-
-
-<br>
 <!--
 <! show the links to other pages.>
 Page Numbers <br>
@@ -31,4 +19,3 @@ Page Numbers <br>
 <a href = "/view/{{pgno}}">{{pgno}}</a> 
 {% endfor %}
 -->
-</html>
