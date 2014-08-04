@@ -90,6 +90,11 @@ form#search
     background-color:#ffffff;
 }
 
+form#search *
+{
+    outline:none;
+}
+
 #query
 {
     float:left;
