@@ -29,3 +29,24 @@ def view(request):
         template = page_template
 
     return render(request, template, ctx)
+
+def category(request, category_num):
+    """
+        request : http request
+        page : page number
+    """
+    if request.method == 'POST':
+        pass
+    no_of_articles = Article.objects.count()
+    category = int(category_num)
+    articles = Article.objects.filter(category=category)
+    template = 'board/view.html'
+    page_template = 'board/view_page.html'
+    ctx = {'chosen':articles,
+            'no_of_articles':no_of_articles,
+            'page_template':page_template,
+            }
+    if request.is_ajax():
+        template = page_template
+
+    return render(request, template, ctx)
