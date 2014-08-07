@@ -4,7 +4,7 @@ function applyEvent(id) {
 		$(id+">.subcategory").show();
 	});
 	$(id).mouseleave(function(){
-		$(id).css("background-color","#76CCE7");
+		$(id).css("background-color","");
 		$(id+">.subcategory").hide();
 	});
 }
