@@ -2,9 +2,12 @@
 
 {% paginate 4 chosen %}
 {% load imagefit %}
-{% for articles in chosen %}
-<img src = {{articles.main_poster.picture|resize:'320x240'}}>
-
+{% for articles_line in chosen %}
+{% for article in articles_line %}
+<div class='poster' style="background-color:#000000;float:left;">
+    <img src = {{MEDIA_URL}}{{article.0}} style="height:{{picture_height}}px;margin-left:{{article.1}}px;margin-right:{{article.2}}px">
+</div>
+{% endfor %}
 <br>
 {% endfor %}
 {% show_more %}
