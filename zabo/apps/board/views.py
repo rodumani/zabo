@@ -17,7 +17,7 @@ def view(request):
     if request.method == 'POST':
         pass
     no_of_articles = Article.objects.count()
-    articles = Article.objects.all().order_by('id')
+    articles = Article.objects.all().order_by('?')
 
     template = 'board/view.html'
     page_template = 'board/view_page.html'
