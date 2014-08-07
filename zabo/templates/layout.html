@@ -3,6 +3,8 @@
 <head>
 	<title>Zabo</title>
 	<meta charset="utf-8"/>
+	<script src="{{STATIC_URL}}js/jquery/jquery-1.11.1.min.js"></script>
+	<script src="{{STATIC_URL}}js/layout.js"></script>
 	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/layout.css">
 	{% block header %}
 	{% endblock %}
@@ -15,15 +17,37 @@
 					<img src="{{MEDIA_URL}}logo.png" />
 				</a>
 			</div>
-			<div class="menu">
-				<a href="/">신입생 모집</a>
+			<div class="bar"></div>
+			<div class="menu" id="newbie">
+				<div class="category">
+					<a href="/">신입생 모집</a>
+				</div>
+				<div class="subcategory">
+					<div><a href="/">category1</a></div>
+					<div><a href="/">category2</a></div>
+				</div>
 			</div>
-			<div class="menu">
-				<a href="/">동아리 공연</a>
+			<div class="bar"></div>
+			<div class="menu" id="perform">
+				<div class="category">
+					<a href="/">동아리 공연</a>
+				</div>
+				<div class="subcategory">
+					<div><a href="/">category1</a></div>
+					<div><a href="/">category2</a></div>
+				</div>
 			</div>
-			<div class="menu">
-				<a></a>
+			<div class="bar"></div>
+			<div class="menu" id="temp">
+				<div class="category">
+					<a href="/">얘도 카테고리</a>
+				</div>
+				<div class="subcategory">
+					<div><a href="/">category1</a></div>
+					<div><a href="/">category2</a></div>
+				</div>
 			</div>
+			<div class="bar"></div>
 			<div class="logio" id="login">
 				<a href="/login/">Login</a>
 			</div>

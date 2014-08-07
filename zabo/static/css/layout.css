@@ -24,56 +24,86 @@ a
 
 #container
 {
-    max-width:1024px;
-    margin:0 auto;
+    width:1024px;
     height:100%;
+    margin:0 auto;
 }
 
 #header
 {
-    height:54px;
+    height:50px;
     background-color:#76CCE7;
     margin-bottom:10px;
-}
-
-#header > div
-{
-    height:54px;
-    text-align:center;
-}
-
-#header img
-{
-    vertical-align:middle;
-}
-
-.menu
-{
-    float:left;
-}
-
-.menu > a
-{
-    padding:0px 12px;
-    color:#000000;
-    font-weight:bold;
-    line-height:54px;
-    border-left:2px solid #151D5E;
 }
 
 #home
 {
     float:left;
-    width:140px;
+    height:50px;
 }
 
 #home > a
 {
-    display:inline-block;
-    width:inherit;
+    display:block;
+    padding:0px 15px;
     height:inherit;
-    line-height:54px;
-    border-left:none;
+}
+
+#home img
+{
+    margin-top:5px;
+}
+
+.bar
+{
+    float:left;
+    height:26px;
+    margin:12px 0px;
+    border-left:2px solid #151D5E;
+}
+
+.menu
+{
+    float:left;
+    height:inherit;
+    width:142px;
+    text-align:center;
+}
+
+.menu > div.category
+{
+    height:inherit;
+    font-size:11pt;
+}
+
+.category > a
+{
+    display:block;
+    padding:12px 0px;
+    color:#000000;
+    font-weight:bold;
+    line-height:26px;
+}
+
+.subcategory
+{
+    display:none;
+    position:relative;
+    background-color:#76CCE7;
+    font-size:10pt;
+    z-index:1;
+}
+
+.subcategory > div
+{
+    border-bottom:1px solid #151D5E;
+}
+
+.subcategory a
+{
+    color:#000000;
+    line-height:35px;
+    font-weight:bold;
 }
 
 div#search
