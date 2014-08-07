@@ -39,7 +39,7 @@ a
 #home
 {
     float:left;
-    height:50px;
+    height:inherit;
 }
 
 #home > a
@@ -115,7 +115,7 @@ form#search
 {
     display:inline-block;
     height:30px;
-    margin:10px 0px;
+    margin:8px 0px;
     border:2px solid #444444;
     background-color:#ffffff;
 }
@@ -123,6 +123,7 @@ form#search
 form#search *
 {
     outline:none;
+    vertical-align:middle;
 }
 
 #query
@@ -141,11 +142,11 @@ form#search *
 .logio
 {
     float:right;
+    height:inherit;
 }
 
 .logio > a
 {
-    height:54px;
     padding:0px 15px;
     color:#000000;
     font-weight:bold;
