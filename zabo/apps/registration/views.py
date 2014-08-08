@@ -90,13 +90,13 @@ def add_article(request):
     file_to_save = []
     if (number_of_files >= 1):
         try :
-            main_file = files['main']
+            main_file = files['main0']
             main_poster = Poster(belong_article_main=new_article, picture=main_file)
             Image.open(main_file).verify()
             file_to_save.append(main_poster)
 
             if (number_of_files >= 2):
-                for count in range(1, number_of_files):
+                for count in range(0, number_of_files - 1):
                     sub_file = files['sub' + str(count)]
                     Image.open(sub_file).verify()
                     sub_poster = Poster(belong_article_sub=new_article, picture=sub_file)
