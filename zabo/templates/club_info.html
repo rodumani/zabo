@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block header %}
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/club_info.css">
+{% endblock %}
+
+{% block club_info %}
+<div id="club_info">
+    <div id="club_picture">
+        <img src="{{MEDIA_URL}}club_picture_test.png" />
+    </div>
+    <div id="club_right">
+        <div id="club_title">
+            SPARCS
+        </div>
+        <div id="club_content">
+            KAIST IT 웹서비스 동아리 SPARCS입니다.<br>
+            OTL, ARA, Taxi together 등 다양한 서비스를 제공하고 있습니다.<br>
+            꼭 전산과가 아니여도 다양한 학과의 사람들이 모여서 함께 하고 있습니다.<br>
+            <br>
+            개발자와 디자이너 모두모두 환영합니다&gt;&lt;<br>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+{% include "board/view_page.html" %}
+{% endblock %}
