@@ -1,0 +1,27 @@
+#club_info
+{
+    display:inline-block;
+    width:100%;
+    border:2px solid #95D3CE;
+    margin-bottom:15px;
+}
+
+#club_picture
+{
+    float:left;
+    width:225px;
+}
+
+#club_right
+{
+    float:right;
+    width:799px;
+}
+
+#club_title
+{
+    line-height:53px;
+    border-bottom:2px solid #95D3CE;
+    margin:0px 20px 15px 0px;
+    font-weight:bold;
+}

@@ -10,6 +10,7 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^club/(?P<name>[a-zA-Z]+)/', 'zabo.apps.club.views.view'),
     url(r'^registration/', include('zabo.apps.registration.urls')),
     url(r'^login/', 'zabo.apps.account.views.login'),
     url(r'^logout/', 'zabo.apps.account.views.logout'),
