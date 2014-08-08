@@ -115,6 +115,8 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.app_directories.Loader',
 )
 
+LOGIN_URL = '/login/'
+
 # custom server settings
 try:
     from settings_local import *
