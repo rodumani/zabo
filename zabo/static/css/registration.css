@@ -1,0 +1,72 @@
+
+.ui-datepicker { font-size:11px; }
+
+.form-group {
+    width: 100%;
+    display : table;
+    margin-bottom:5px;
+    content : " ";
+}
+
+.form-label {
+    float:left; 
+    text-align : right;
+    position : relative;
+    width : 16%;
+    padding-top:4px;
+    padding-left : 15px;
+    padding-right : 15px;
+}
+
+.form-col {
+    width : 70%;
+    position : relative;
+    min-height : 1px;
+    float : left;
+    padding-left : 15px;
+    padding-right : 15px;
+}
+
+.form-control {
+    width: 100%;
+    font-size : 14px;
+    float : left; 
+    padding : 0px;
+}
+
+.form-control.floating {
+    width:auto;
+}
+
+select.form-control {
+    width : 20%;
+    height : 32px;
+}
+
+input.form-control {
+    padding : 6px 0px 6px 12px;
+}
+
+textarea.form-control {
+    height : auto;
+    padding : 6px 2px 6px 12px;
+}
+
+.form-control .input-radio, .form-control .input-file {
+    margin-top : 7px;
+}
+
+.form-control div.input-group input {
+    margin-top : 0px;
+    width : 120px;
+    padding : 6px 12px;
+    display : block;
+    float : left;
+}
+
+.input-group .input-group-addon {
+    display : table-cell;
+    vertical-align : middle;
+    height : 27px;
+    padding : 0px 4px;
+}
