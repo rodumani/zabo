@@ -44,7 +44,7 @@ def view(request):
             all.append(line)
             l = []
             length = 0
-        l.append(picture)
+        l.append(picture.url)
         length += new_width
 
     if length != 0:
