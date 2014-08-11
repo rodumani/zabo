@@ -2,7 +2,8 @@
 """ 자보 리스트 보여주기 기능 구현 """
 from models import Article, Poster
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
+from zabo.apps.account.models import UserProfile
 import os
 
 
@@ -50,3 +51,11 @@ def category(request, category_num):
         template = page_template
 
     return render(request, template, ctx)
+
+def search(request):
+    query = request.GET.get('query', '')
+    club = UserProfile.objects.filter(club_name_en=query)
+    if not club:
+        #TODO show search result
+        return redirect('/')
+    return redirect('/club/'+query)
