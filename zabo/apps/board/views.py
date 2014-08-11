@@ -26,10 +26,41 @@ def view(request):
         request : http request
         page : page number
     """
-    if request.method == 'POST':
-        pass
-    no_of_articles = Article.objects.count()
     articles = Article.objects.all().order_by('?')
+    template = 'board/view.html'
+    page_template = 'board/view_page.html'
+    if request.is_ajax():
+        template = page_template
+
+    return render(request, template, get_ctx(articles))
+
+def category(request, category_num):
+    """
+        request : http request
+        page : page number
+    """
+    category = int(category_num)
+    articles = Article.objects.filter(category=category)
+    template = 'board/view.html'
+    page_template = 'board/view_page.html'
+    if request.is_ajax():
+        template = page_template
+
+    return render(request, template, get_ctx(articles))
+
+def search(request):
+    query = request.GET.get('query', '')
+    club = UserProfile.objects.filter(club_name_en=query)
+    if not club:
+        #TODO show search result
+        return redirect('/')
+    return redirect('/club/'+query)
+
+def get_ctx(articles):
+    """
+        return context in redirect
+        articles : want to show articles
+    """
 
     all = []
     l = []
@@ -54,43 +85,9 @@ def view(request):
             line.append([l[i], 0, 0, 10])
         all.append(line)
 
-    template = 'board/view.html'
     page_template = 'board/view_page.html'
     ctx = {'chosen':all,
-            'no_of_articles':no_of_articles,
             'page_template':page_template,
             'picture_height':MAX_HEIGHT,
             }
-    if request.is_ajax():
-        template = page_template
-
-    return render(request, template, ctx)
-
-def category(request, category_num):
-    """
-        request : http request
-        page : page number
-    """
-    if request.method == 'POST':
-        pass
-    no_of_articles = Article.objects.count()
-    category = int(category_num)
-    articles = Article.objects.filter(category=category)
-    template = 'board/view.html'
-    page_template = 'board/view_page.html'
-    ctx = {'chosen':articles,
-            'no_of_articles':no_of_articles,
-            'page_template':page_template,
-            }
-    if request.is_ajax():
-        template = page_template
-
-    return render(request, template, ctx)
-
-def search(request):
-    query = request.GET.get('query', '')
-    club = UserProfile.objects.filter(club_name_en=query)
-    if not club:
-        #TODO show search result
-        return redirect('/')
-    return redirect('/club/'+query)
+    return ctx
