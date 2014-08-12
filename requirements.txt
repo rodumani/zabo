@@ -2,3 +2,4 @@ Django==1.6.5
 Pillow==2.5.1
 django-imagefit==0.4
 django-endless-pagination==2.0
+pil==1.1.7
