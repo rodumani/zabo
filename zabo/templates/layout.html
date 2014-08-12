@@ -48,12 +48,15 @@
 				</div>
 			</div>
 			<div class="bar"></div>
+			{% if user.is_authenticated %}
+			<div class="logio" id="logout">
+				<a href="/logout/">Logout</a>
+			</div>
+			{% else %}
 			<div class="logio" id="login">
 				<a href="/login/">Login</a>
 			</div>
-			<div class="logio" id="logout" style="display:none">
-				<a href="/logout/">Logout</a>
-			</div>
+			{% endif%}
 			<div id="search">
 				<form id="search" action="/search/">
 					<input id="query" name="query">
