@@ -47,12 +47,8 @@ INSTALLED_APPS = (
     'zabo.apps.board',
     'zabo.apps.club',
     'zabo.apps.main',
-    'imagefit',
     'endless_pagination'
     )
-
-IMAGEFIT_ROOT = BASE_DIR + '/zabo/media/'
-
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
