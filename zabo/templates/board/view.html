@@ -1,11 +1,22 @@
 {% extends "layout.html" %}
+{% block header %}
+	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/view.css">
+{% endblock %}
+
 {% block content %}
+
+<div id="openModal" class="modalDialog">
+	<div>
+		<a href="#close" title="Close" class="close">X</a>
+		<h2>Modal Box</h2>
+		test
+	</div>
+</div>
 
 {% include page_template %}
 
 {% block js %}
     {{ extend }}
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="{{ STATIC_URL }}endless_pagination/js/endless-pagination.js"></script>
     <script>$.endlessPaginate({paginateOnScroll: true});</script>
 {% endblock %}
