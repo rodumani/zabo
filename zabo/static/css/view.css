@@ -22,12 +22,13 @@
 .modalDialog > div {
     width: 700px;
     height: 100%;
+    padding-top: 15px;
     position: relative;
     margin: auto;
     background: #fff;
 }
 
-.closeModal {
+.modalClose {
     background: #eee;
     color: #000;
     line-height: 29px;
@@ -42,5 +43,56 @@
     border-radius: 15px;
 }
 
-.closeModal:hover { background: #00d9ff; }
+.modalClose:hover { background: #00d9ff; }
 
+#modalTitle {
+    font-size: 20px;
+    margin-left: 30px;
+    font-weight: bold;
+}
+
+.modalLine{
+    margin-top: 10px;
+    line-height: 25px;
+    font-weight: bold;
+}
+
+.modalDesc{
+    background: #90D0D0;
+    width: 100px;
+    text-align: center;
+    float: left;
+}
+
+.modalComment{
+    margin-left: 10px;
+    float: left;
+}
+
+#modalPictures{
+    clear: both;
+    background: #000;
+    height: 520px;
+    margin-top: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#modalContent{
+    clear: both;
+    margin-top: 40px;
+    margin-left: 10px;
+}
+
+#mainPicture{
+    max-height: 300px;
+    display: block;
+    margin: auto;
+}
+
+.subPicture{
+    margin-top: 10px;
+    max-height: 200px;
+    margin-left: 43px;
+    margin-right: 43px;
+}
