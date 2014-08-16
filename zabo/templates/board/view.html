@@ -3,15 +3,17 @@
 	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/view.css">
 {% endblock %}
 
-{% block content %}
-
+{% block modalview %}
 <div id="openModal" class="modalDialog">
 	<div>
-		<a href="#close" title="Close" class="close">X</a>
+		<a href="#closeModal" title="Close" class="closeModal">X</a>
 		<h2>Modal Box</h2>
 		test
 	</div>
 </div>
+{% endblock %}
+
+{% block content %}
 
 {% include page_template %}
 
