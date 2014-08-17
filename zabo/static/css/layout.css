@@ -2,7 +2,7 @@
 {
     margin:0;
     padding:0;
-    border:0;
+    font-family: '맑은 고딕';
 }
 
 html
@@ -156,4 +156,5 @@ form#search *
 #content
 {
     float:left;
+    width:inherit;
 }

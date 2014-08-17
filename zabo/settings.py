@@ -47,12 +47,8 @@ INSTALLED_APPS = (
     'zabo.apps.board',
     'zabo.apps.club',
     'zabo.apps.main',
-    'imagefit',
     'endless_pagination'
     )
-
-IMAGEFIT_ROOT = BASE_DIR + '/zabo/media/'
-
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -125,6 +121,8 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
 )
+
+LOGIN_URL = '/login/'
 
 # custom server settings
 try:

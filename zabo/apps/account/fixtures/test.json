@@ -1,0 +1,92 @@
+[
+{
+    "pk": 2, 
+    "model": "auth.user", 
+    "fields": {
+        "username": "test", 
+        "first_name": "", 
+        "last_name": "", 
+        "is_active": true, 
+        "is_superuser": false, 
+        "is_staff": false, 
+        "last_login": "2014-08-07T14:14:38.996Z", 
+        "groups": [], 
+        "user_permissions": [], 
+        "password": "pbkdf2_sha256$12000$v8PE7wPo04Ze$qw2b6m9hxsTEy62ZL7wrpRIACld3wM5fmkALpQX9ofU=", 
+        "email": "", 
+        "date_joined": "2014-08-07T14:14:38.996Z"
+    }
+},
+{
+    "pk": 3, 
+    "model": "auth.user", 
+    "fields": {
+        "username": "test2", 
+        "first_name": "", 
+        "last_name": "", 
+        "is_active": true, 
+        "is_superuser": false, 
+        "is_staff": false, 
+        "last_login": "2014-08-07T14:15:30.109Z", 
+        "groups": [], 
+        "user_permissions": [], 
+        "password": "pbkdf2_sha256$12000$HNammgP3y10e$i4TjcXiMTyB94qWTYUpEpmgqvxpvaHq02HZztP/Zqqo=", 
+        "email": "", 
+        "date_joined": "2014-08-07T14:15:30.109Z"
+    }
+},
+{
+    "pk": 4, 
+    "model": "auth.user", 
+    "fields": {
+        "username": "test3", 
+        "first_name": "", 
+        "last_name": "", 
+        "is_active": true, 
+        "is_superuser": false, 
+        "is_staff": false, 
+        "last_login": "2014-08-07T14:16:36.042Z", 
+        "groups": [], 
+        "user_permissions": [], 
+        "password": "pbkdf2_sha256$12000$uXgy6gKo6Lv3$1Gx1e6kalJOd1F8sqGNpZV+JkH1y5kZzSTUq+r18Zhw=", 
+        "email": "", 
+        "date_joined": "2014-08-07T14:16:36.042Z"
+    }
+},
+{
+    "pk": 1, 
+    "model": "account.userprofile", 
+    "fields": {
+        "club_name": "\uc2a4\ud30d\uc2a4", 
+        "club_name_en": "SPARCS", 
+        "club_comment": "IT\ubd84\uacfc \ub3d9\uc544\ub9ac \uc2a4\ud30d\uc2a4\uc785\ub2c8\ub2e4\r\n\uc804\uc0b0\uc804\uc0b0\ud574", 
+        "profile_image": "profile/sparcs_logo.png", 
+        "user": 2, 
+        "department": 1
+    }
+},
+{
+    "pk": 2, 
+    "model": "account.userprofile", 
+    "fields": {
+        "club_name": "\ub8e8\ud0a4", 
+        "club_name_en": "rookie", 
+        "club_comment": "\uc57c\uad6c\uacbd\uae30", 
+        "profile_image": "profile/no-img.jpg", 
+        "user": 3, 
+        "department": 2
+    }
+},
+{
+    "pk": 3, 
+    "model": "account.userprofile", 
+    "fields": {
+        "club_name": "\ub7f0", 
+        "club_name_en": "run", 
+        "club_comment": "compile -> build -> run!", 
+        "profile_image": "profile/no-img.jpg", 
+        "user": 4, 
+        "department": 1
+    }
+}
+]

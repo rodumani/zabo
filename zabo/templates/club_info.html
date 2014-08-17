@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "board/view.html" %}
 
 {% block header %}
     <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/club_info.css">
@@ -22,8 +22,4 @@
         </div>
     </div>
 </div>
-{% endblock %}
-
-{% block content %}
-{% include "board/view_page.html" %}
 {% endblock %}
