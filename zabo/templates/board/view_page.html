@@ -1,10 +1,14 @@
+{% block header %}
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/board/view.css">
+{% endblock %}
+
 {% load endless %}
 
 {% paginate 4 chosen %}
 {% for articles_line in chosen %}
 <div class='line'>
 {% for article in articles_line %}
-<div class='poster' style="background-color:#000000;float:left;margin-top:10px">
+<div class='poster'>
     <img src = {{article.0}} style="height:{{picture_height}}px;margin-left:{{article.1}}px;margin-right:{{article.2}}px">
 </div>
 <div class='blank' style="height:{{picture_height}}px;width:{{article.3}}px;float:left"></div>
