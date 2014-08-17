@@ -18,7 +18,13 @@
 			var me = this;
 
 			for (var i = 0; i < this.options.type_list.length; i++) {
-				var plus_button = $(document.createElement('button')).text('+');
+				var plus_button = $(document.createElement('button')).text('+').css({
+					'position' : 'relative',
+					'height' : '34px',
+					'width' : '30px',
+					'display' : 'table-cell',
+					'vertical-align' : 'middle',
+				});
 				var typename = this.options.type_list[i].name;
 				var input_container = $(document.createElement('div')).addClass('file-' + typename + '-div')
 				// override each type option
@@ -93,9 +99,16 @@
 			var currLen = this.info[type].inputs.length;
 			var me = this;
 
-			var inputDiv = $(document.createElement('div')).css('width', '300px');
+			var inputDiv = $(document.createElement('div')).css(this.info[type].css);
+
 			var input = $(document.createElement('input')).attr('type', 'file');
-			var removeButton = $(document.createElement('button')).text('x');
+			var removeButton = $(document.createElement('button')).text('X').css({
+				'position' : 'relative',
+				'height' : '34px',
+				'width' : '30px',
+				'display' : 'table-cell',
+				'vertical-align' : 'middle',
+			});
 
 			inputDiv.append(input).append(removeButton);
 			var inputInfo = {
@@ -109,7 +122,7 @@
 				me.removeInput(type, inputInfo);
 			});
 
-			input.addClass('file-' + type);
+			input.addClass('file-' + type).addClass('form-control');
 			this.info[type].div.append(inputDiv);
 			this.info[type].inputs.push(inputInfo);
 
@@ -159,13 +172,16 @@
 		minimum : 1,
 		maximum : 3,
 		default_file : [],
-		css : {},
+		css : {
+			'height' : '33px',
+			'margin-bottom' : '15px',
+		},
 	}
 
 })(window.jQuery);
 
 $(function(){
-	var poster_file = $('div#poster_file');
+	var poster_file = $('div#poster-file');
 	var file_handler = poster_file.file_handler({
 		'show_thumbnail' : true,
 		'type_list' : [{
