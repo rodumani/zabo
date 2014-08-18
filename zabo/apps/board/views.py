@@ -72,17 +72,17 @@ def get_ctx(articles):
             space = determine_space(len(l), length)
             line = []
             for i in range(len(l)): # determine the margin-left/right
-                line.append([l[i], space[i*3], space[i*3+1], space[i*3+2]])
+                line.append([l[i][0], space[i*3], space[i*3+1], space[i*3+2], l[i][1]])
             all.append(line)
             l = []
             length = 0
-        l.append(picture.url)
+        l.append((picture.url, article.id))
         length += new_width
 
     if length != 0:
         line = []
         for i in range(len(l)):
-            line.append([l[i], 0, 0, 10])
+            line.append([l[i][0], 0, 0, 10, l[i][1]])
         all.append(line)
 
     page_template = 'board/view_page.html'
@@ -91,3 +91,10 @@ def get_ctx(articles):
             'picture_height':MAX_HEIGHT,
             }
     return ctx
+
+def get_detail(request):
+    if request.is_ajax():
+        message = "ajax"
+    else:
+        message = "no"
+    return HttpResponse(message)
