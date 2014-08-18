@@ -129,6 +129,18 @@ p#registration-header {
     display:none;
 }
 
+#registration-title {
+    width: 700px;
+}
+
+#registration-title-count {
+    display : inline-block;
+    float:right;
+    margin-top : 7px;
+    text-align : right;
+    vertical-align : middle;
+}
+
 div#poster-file input[type="file"] {
     background-color : #ffffff;
     padding : 0px;

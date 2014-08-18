@@ -209,4 +209,18 @@ $(function(){
 	var end_date = $('#end_date').datepicker({
 		dateFormat : 'yy/mm/dd',
 	});
+
+	var title_counter = $('#registration-title-count');
+	var title = $('input#registration-title');
+	var title_count = function () {
+		var len = title.val().length;
+		if (len > 80 ){
+			title_counter.css('color', 'red');
+		} else {
+			title_counter.css('color', 'black');
+		}
+		title_counter.text(title.val().length + ' / ' + 80);
+	};
+	title.bind('keydown keyup keypress', title_count);
+	title_count();
 });
