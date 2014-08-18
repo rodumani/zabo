@@ -4,7 +4,9 @@ from models import Article, Poster
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from zabo.apps.account.models import UserProfile
+from django.core.serializers.json import DjangoJSONEncoder
 import os
+import json
 
 # Create your views here.
 
@@ -93,8 +95,19 @@ def get_ctx(articles):
     return ctx
 
 def get_detail(request):
-    if request.is_ajax():
-        message = "ajax"
-    else:
-        message = "no"
-    return HttpResponse(message)
+    print request
+    article_id = request.GET['article_id']
+    
+    if not Article.objects.filter(id=article_id).exists():
+        raise ValidationError("no article id %d"%article_id)
+    article = Article.objects.get(id=article_id)
+    sub_pictures = [poster.picture.url for poster in article.sub_poster.all()]
+    return HttpResponse(json.dumps({
+        'title' : '[' + article.get_category_display() + '] ' + article.title,
+        'writer_name' : article.writer.profile.club_name,
+        'main_picture' : article.main_poster.picture.url,
+        'sub_pictrues' : sub_pictures,
+        'start_time' : article.start_datetime.date(),
+        'end_time' : article.end_datetime.date(),
+        'content' : article.comment
+    }, cls=DjangoJSONEncoder))
