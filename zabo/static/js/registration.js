@@ -79,11 +79,11 @@
 			var currLen = this.info[type].inputs.length;
 			if (this.info[type].minimum >= currLen) {
 				$.each(this.info[type].inputs, function(i, v) {
-					v.remove.hide();
+					v.remove.css('visibility', 'hidden');
 				});
 			} else {
 				$.each(this.info[type].inputs, function(i, v) {
-					v.remove.show();
+					v.remove.css('visibility', 'visible');
 				});
 			}
 
@@ -101,7 +101,9 @@
 
 			var inputDiv = $(document.createElement('div')).css(this.info[type].css);
 
-			var input = $(document.createElement('input')).attr('type', 'file');
+			var input = $(document.createElement('input')).attr('type', 'file').css({
+				'margin-right' : '20px'
+			});
 			var removeButton = $(document.createElement('button')).text('X').css({
 				'position' : 'relative',
 				'height' : '34px',
@@ -134,11 +136,11 @@
 
 			if (this.info[type].minimum >= this.info[type].inputs.length) {
 				$.each(this.info[type].inputs, function(i, v) {
-					v.remove.hide();
+					v.remove.css('visibility', 'hidden');
 				});
 			} else {
 				$.each(this.info[type].inputs, function(i, v) {
-					v.remove.show();
+					v.remove.css('visibility', 'visible');
 				});
 			}
 

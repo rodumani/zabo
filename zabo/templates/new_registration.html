@@ -13,7 +13,11 @@
 <form method="post" id="registration-form" action="add_article/" enctype="multipart/form-data">
 {% csrf_token %}
 	<div class="form-group" id="registration-category">
-        <label class="form-label">카테고리</label>
+		<div class="form-label">
+			<div class="form-label-div">
+				<span class="form-label-span">카테고리</span>
+			</div>
+		</div>
 		<div class="form-col">
 			<div class="input-group">
 				<select name="category" class="form-control">
@@ -27,21 +31,33 @@
     </div>
 
 	<div class="form-group">
-        <label class="form-label">제&nbsp;&nbsp;&nbsp;&nbsp;목</label>
+		<div class="form-label">
+			<div class="form-label-div">
+				<span class="form-label-span">제&nbsp;&nbsp;&nbsp;&nbsp;목</span>
+			</div>
+		</div>
 		<div class="form-col">
         	<input type="text" name="title" class="form-control"/>
 		</div>
     </div>
 
 	<div class="form-group" id="board-comment">
-        <label class="form-label">내용</label>
+		<div class="form-label">
+			<div class="form-label-div">
+				<span class="form-label-span">내&nbsp;&nbsp;&nbsp;&nbsp;용</span>
+			</div>
+		</div>
 		<div class="form-col">
-        	 <textarea rows="20" name="comment" class="form-control"></textarea>
+        	 <textarea rows="20" name="comment" id="registration-comment" class="form-control"></textarea>
 		</div>
     </div>
 
 	<div class="form-group">
-        <label class="form-label">기&nbsp;&nbsp;&nbsp;&nbsp;간</label>
+		<div class="form-label">
+			<div class="form-label-div">
+				<span class="form-label-span">기&nbsp;&nbsp;&nbsp;&nbsp;간</span>
+			</div>
+		</div>
 		<div class="form-col">
 			<div class="form-control floating">
 				<div class="input-group">
@@ -50,7 +66,7 @@
 				</div>
 			</div>
 			<div class="form-control floating">
-				<label style="display:table-cell; height:32px; vertical-align:middle;">~&nbsp;</label>
+				<label style="display:table-cell; height:32px; vertical-align:middle;">&nbsp;~&nbsp;</label>
 			</div>
 			<div class="form-control floating">
 				<div class="input-group">
@@ -61,7 +77,11 @@
 		</div>
     </div>
     <div class="form-group">
-        <label class="form-label">활성화</label>
+		<div class="form-label">
+			<div class="form-label-div">
+				<span class="form-label-span">활성화</span>
+			</div>
+		</div>
 		<div class="form-col">
 			<div class="form-control">
 				<div class="input-radio">
@@ -73,7 +93,11 @@
 		</div>
     </div>
     <div class="form-group">
-		<label class="form-label">파일 첨부</label>
+		<div class="form-label">
+			<div class="form-label-div">
+				<span class="form-label-span">파일 첨부</span>
+			</div>
+		</div>
 		<div class="form-col">
 			<div class="form-control">
 				<div id="poster-file">
