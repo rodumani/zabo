@@ -1,0 +1,104 @@
+
+<form method="post" id="registration-form" action="add_article/" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group" id="registration-category">
+        <div class="form-label">
+            <div class="form-label-div">
+                <span class="form-label-span">카테고리</span>
+            </div>
+        </div>
+        <div class="form-col">
+            <div class="input-group">
+                <select name="category" class="form-control" id="registration-category-select">
+                    {% for category in category_choice %}
+                    <option value="{{category.0}}">{{category.1}}</option>
+                    {% endfor %}
+                </select>
+                <span class="input-group-addon" id="registration-category-addon"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="form-label">
+            <div class="form-label-div">
+                <span class="form-label-span">제&nbsp;&nbsp;&nbsp;&nbsp;목</span>
+            </div>
+        </div>
+        <div class="form-col">
+            <input id="registration-title" type="text" name="title" class="form-control"/>
+            <div id="registration-title-count"></div>
+        </div>
+    </div>
+
+    <div class="form-group" id="board-comment">
+        <div class="form-label">
+            <div class="form-label-div">
+                <span class="form-label-span">내&nbsp;&nbsp;&nbsp;&nbsp;용</span>
+            </div>
+        </div>
+        <div class="form-col">
+            <textarea rows="20" name="comment" id="registration-comment" class="form-control"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="form-label">
+            <div class="form-label-div">
+                <span class="form-label-span">기&nbsp;&nbsp;&nbsp;&nbsp;간</span>
+            </div>
+        </div>
+        <div class="form-col">
+            <div class="form-control floating">
+                <div class="input-group">
+                    <input type="text" name="start_date" class="ui-datepicker-input" id="start_date"/>
+                    <span class="input-group-addon"></span>
+                </div>
+            </div>
+            <div class="form-control floating">
+                <label style="display:table-cell; height:32px; vertical-align:middle;">&nbsp;~&nbsp;</label>
+            </div>
+            <div class="form-control floating">
+                <div class="input-group">
+                    <input type="text" name="end_date" class="ui-datepicker-input" id="end_date"/>
+                    <span class="input-group-addon"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="form-label">
+            <div class="form-label-div">
+                <span class="form-label-span">활성화</span>
+            </div>
+        </div>
+        <div class="form-col">
+            <div class="form-control">
+                <div class="input-radio">
+                    <input type="radio" name="activate" value="on" checked/> On
+                    &nbsp;
+                    <input type="radio" name="activate" value="off"/> Off
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="form-label">
+            <div class="form-label-div">
+                <span class="form-label-span">파일 첨부</span>
+            </div>
+        </div>
+        <div class="form-col">
+            <div class="form-control">
+                <div id="poster-file">
+                    <!-- should be like
+                    <input type="file" name="main"/>
+                    <input type="file" name="sub1"/>
+                    <button id="add_sub_image">+</button>
+                    -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <input id="registration-submit" type="submit" value="글쓰기 완료"/>
+</form>

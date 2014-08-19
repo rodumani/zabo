@@ -75,6 +75,7 @@ textarea.form-control {
     margin-top : 0px;
     width : 120px;
     padding : 6px 12px;
+    font-size : 14px;
     display : block;
     float : left;
 }
@@ -139,13 +140,14 @@ p#registration-header {
     margin-top : 7px;
     text-align : right;
     vertical-align : middle;
+    font-weight : bold;
 }
 
 div#poster-file input[type="file"] {
     background-color : #ffffff;
+    border : 0px;
     padding : 0px;
     height : 22px;
-    width : 720px;
     padding : 5px;
 }
 

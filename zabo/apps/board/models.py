@@ -21,6 +21,25 @@ class Article(models.Model):
     activate = models.BooleanField()
     comment = models.TextField()
 
+    def __json__(self):
+
+        sub_pictures = [ poster.__json__() for poster in self.sub_poster.all()]
+
+        return {
+            'category' : self.get_category_display(),
+            'title' : self.title,
+            'writer' : self.writer.profile.__json__(),
+            'main_picture' : {
+                'file' : os.path.basename(self.main_poster.picture.name),
+                'url' : self.main_poster.picture.url 
+                },    
+            'sub_pictrues' : sub_pictures,
+            'start_time' : str(self.start_datetime.date()),
+            'end_time' : str(self.end_datetime.date()),
+            'comment' : self.comment
+            }
+
+
 class Poster(models.Model):
     """ Image field of zabo """
     picture = models.ImageField(upload_to='pictures/', default='pictures/no-img.jpg')
@@ -32,6 +51,11 @@ class Poster(models.Model):
     def name(self):
         """returns itself"""
         return self
+    def __json__(self):
+        return json.dumps({
+            'file' : os.path.basename(self.picture.name),
+            'url' : self.picture.url,
+            })
 
 class ArticleAdmin(admin.ModelAdmin):
     list_display = ('writer', 'title', 'category', 'start_datetime', 'end_datetime', 'activate', 'comment')
