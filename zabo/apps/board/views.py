@@ -46,10 +46,12 @@ def category(request, category_num):
     articles = Article.objects.filter(category=category)
     template = 'board/view.html'
     page_template = 'board/view_page.html'
+    ctx = get_ctx(articles)
+    ctx['current_category'] = articles[0].get_category_display()
     if request.is_ajax():
         template = page_template
 
-    return render(request, template, get_ctx(articles))
+    return render(request, template, ctx)
 
 def search(request):
     query = request.GET.get('query', '')
