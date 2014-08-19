@@ -17,7 +17,6 @@ urlpatterns = patterns('',
     url(r'^main/', 'zabo.apps.board.views.view'),
     url(r'^search/', 'zabo.apps.board.views.search'),
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root':settings.MEDIA_ROOT}),
-    url(r'^imagefit/', include('imagefit.urls')),
     url(r'^$', 'zabo.apps.main.views.main'),
     url(r'^category/(\d+)/', 'zabo.apps.board.views.category'),
 )
