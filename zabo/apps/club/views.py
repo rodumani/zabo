@@ -1,8 +1,10 @@
 from django.db.models import Q
+from django.http import HttpResponse
 from django.shortcuts import render
 from zabo.apps.account.models import UserProfile
 from zabo.apps.board.models import Article
 from zabo.apps.board.views import get_ctx
+import json
 
 def view(request, name):
     club = UserProfile.objects.get(club_name_en=name)
@@ -18,3 +20,13 @@ def view(request, name):
     ctx['club_comment'] = club.club_comment
 
     return render(request, template, ctx)
+
+def edit(request):
+    club_name_en = request.GET['club_name_en']
+    content = request.GET['content']
+
+    user_profile = UserProfile.objects.get(club_name_en__exact=club_name_en)
+    user_profile.club_comment = content
+    user_profile.save()
+
+    return HttpResponse()
