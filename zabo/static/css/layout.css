@@ -32,7 +32,7 @@ a
 #header
 {
     height:50px;
-    background-color:#76CCE7;
+    background-color:#000000;
     margin-bottom:10px;
 }
 
@@ -45,13 +45,13 @@ a
 #home > a
 {
     display:block;
-    padding:0px 15px;
+    padding:0px 6px;
     height:inherit;
 }
 
 #home img
 {
-    margin-top:5px;
+    margin-top:1px;
 }
 
 .bar
@@ -59,20 +59,21 @@ a
     float:left;
     height:26px;
     margin:12px 0px;
-    border-left:2px solid #151D5E;
+    border-left:2px solid #ffffff;
 }
 
 .menu
 {
     float:left;
     height:inherit;
-    width:142px;
+    width:128px;
     text-align:center;
 }
 
 .menu.mouseover
 {
-    background-color:#35AE9D;
+    background-color:#FABC35;
+    color:#000000
 }
 
 .menu > div.category
@@ -81,11 +82,16 @@ a
     font-size:11pt;
 }
 
+.menu.mouseover a
+{
+    color:#000000;
+}
+
 .category > a
 {
     display:block;
     padding:12px 0px;
-    color:#000000;
+    color:#ffffff;
     font-weight:bold;
     line-height:26px;
 }
@@ -94,14 +100,14 @@ a
 {
     display:none;
     position:relative;
-    background-color:#76CCE7;
+    background-color:#ffffff;
     font-size:10pt;
     z-index:1;
 }
 
 .subcategory > div
 {
-    border-bottom:1px solid #151D5E;
+    border-bottom:1px solid #000000;
 }
 
 .subcategory a
@@ -122,7 +128,7 @@ form#search
     display:inline-block;
     height:30px;
     margin:8px 0px;
-    border:2px solid #444444;
+    border:2px solid #000000;
     background-color:#ffffff;
 }
 
@@ -155,9 +161,9 @@ form#search *
 .logio > a
 {
     padding:0px 15px;
-    color:#000000;
+    color:#FABC35;
     font-weight:bold;
-    line-height:54px;
+    line-height:50px;
 }
 
 #content
