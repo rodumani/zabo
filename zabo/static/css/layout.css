@@ -2,7 +2,7 @@
 {
     margin:0;
     padding:0;
-    border:0;
+    font-family: '맑은 고딕';
 }
 
 html
@@ -70,6 +70,11 @@ a
     text-align:center;
 }
 
+.menu.mouseover
+{
+    background-color:#35AE9D;
+}
+
 .menu > div.category
 {
     height:inherit;
@@ -124,6 +129,7 @@ form#search *
 {
     outline:none;
     vertical-align:middle;
+    border:0;
 }
 
 #query
@@ -156,4 +162,5 @@ form#search *
 #content
 {
     float:left;
+    width:inherit;
 }
