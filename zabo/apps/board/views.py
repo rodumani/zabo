@@ -79,7 +79,7 @@ def get_ctx(articles):
             all.append(line)
             l = []
             length = 0
-        l.append((picture.url, article.id))
+        l.append((picture.url, article.writer))
         length += new_width
 
     if length != 0:
