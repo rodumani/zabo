@@ -11,7 +11,7 @@ import json
 
 # Create your views here.
 
-MAX_HEIGHT = 240
+MAX_HEIGHT = 180
 PAGE_WIDTH = 1024
 MAX_WIDTH = PAGE_WIDTH * 0.9 # For good look
 def determine_space(N, length):
