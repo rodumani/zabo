@@ -2,6 +2,7 @@
 
 {% block header %}
 	{{ block.super }}
+	<script src="{{STATIC_URL}}js/club_info.js"></script>
     <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/club_info.css">
 {% endblock %}
 
@@ -11,12 +12,11 @@
 		<img src="{{MEDIA_URL}}{{ profile_image }}" />
     </div>
     <div id="club_right">
-        <div id="club_title">
-			{{ club_name }}
-        </div>
-        <div id="club_content">
-			{{ club_comment }}
-        </div>
+        <div id="club_title">{{ club_name }}</div>
+        <pre class="club_view" id="club_content">{{ club_comment }}</pre>
+		<textarea class="club_edit" id="club_content_edit"></textarea>
+		<img src="{{MEDIA_URL}}edit.png" class="club_view" id="edit_try" />
+		<img src="{{MEDIA_URL}}edit.png" class="club_edit" id="edit_complete" />
     </div>
 </div>
 {% endblock %}
