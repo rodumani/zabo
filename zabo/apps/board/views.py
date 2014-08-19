@@ -4,7 +4,9 @@ from models import Article, Poster
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from zabo.apps.account.models import UserProfile
+from django.core.serializers.json import DjangoJSONEncoder
 import os
+import json
 
 # Create your views here.
 
@@ -72,21 +74,21 @@ def get_ctx(articles):
             space = determine_space(len(l), length)
             line = []
             for i in range(len(l)): # determine the margin-left/right
-                line.append([l[i], space[i*3]-1, space[i*3+1]-1, space[i*3+2]])
+                line.append([l[i][0], space[i*3]-1, space[i*3+1]-1, space[i*3+2]-1, l[i][1]])
             all.append(line)
             l = []
             length = 0
-        l.append(picture.url)
+        l.append((picture.url, article.id))
         length += new_width
 
     if length != 0:
         line = []
         if length + 30*len(l) <= PAGE_WIDTH:
             for i in range(len(l)):
-                line.append([l[i], 10, 10, 10])
+                line.append([l[i][0], 10, 10, 10, l[i][1]])
         else:
             for i in range(len(l)):
-                line.append([l[i], 5, 5, 5])
+                line.append([l[i][0], 5, 5, 5, l[i][1]])
         all.append(line)
 
     page_template = 'board/view_page.html'
@@ -95,3 +97,21 @@ def get_ctx(articles):
             'picture_height':MAX_HEIGHT,
             }
     return ctx
+
+def get_detail(request):
+    print request
+    article_id = request.GET['article_id']
+    
+    if not Article.objects.filter(id=article_id).exists():
+        raise ValidationError("no article id %d"%article_id)
+    article = Article.objects.get(id=article_id)
+    sub_pictures = [poster.picture.url for poster in article.sub_poster.all()]
+    return HttpResponse(json.dumps({
+        'title' : '[' + article.get_category_display() + '] ' + article.title,
+        'writer_name' : article.writer.profile.club_name,
+        'main_picture' : article.main_poster.picture.url,
+        'sub_pictrues' : sub_pictures,
+        'start_time' : article.start_datetime.date(),
+        'end_time' : article.end_datetime.date(),
+        'content' : article.comment
+    }, cls=DjangoJSONEncoder))
