@@ -1,6 +1,7 @@
 #-*- coding: utf-8 -*-
 """ 자보 리스트 보여주기 기능 구현 """
 from models import Article, Poster
+from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from zabo.apps.account.models import UserProfile
@@ -10,7 +11,7 @@ import json
 
 # Create your views here.
 
-MAX_HEIGHT = 240
+MAX_HEIGHT = 180
 PAGE_WIDTH = 1024
 MAX_WIDTH = PAGE_WIDTH * 0.9 # For good look
 def determine_space(N, length):
@@ -52,11 +53,11 @@ def category(request, category_num):
 
 def search(request):
     query = request.GET.get('query', '')
-    club = UserProfile.objects.filter(club_name_en=query)
-    if not club:
+    club = UserProfile.objects.filter(Q(club_name__iexact=query) | Q(club_name_en__iexact=query))
+    if not len(club)==1:
         #TODO show search result
         return redirect('/')
-    return redirect('/club/'+query)
+    return redirect('/club/'+club[0].club_name_en)
 
 def get_ctx(articles):
     """

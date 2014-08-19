@@ -1,3 +1,4 @@
+# -*- coding: utf-8
 from django.db import models
 from django.contrib.auth.models import User
 from django.contrib import admin
@@ -7,8 +8,8 @@ import os
 # Create your models here.
 
 CATEGORY_CHOICES = (
-    (1, 'fresh'),
-    (2, 'event'),
+    (1, u'신입생 모집'),
+    (2, u'동아리 행사'),
 )
 
 class Article(models.Model):
