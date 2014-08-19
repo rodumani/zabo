@@ -1,11 +1,38 @@
 {% extends "layout.html" %}
+{% block header %}
+<link rel="stylesheet" type="text/css" href="/static/css/login.css">
+{% endblock %}
+
+
+
 {% block content %}
 <form method="POST" action="/login/{%if next%}?next={{next}}{%endif%}">
     {% csrf_token %}
-    ID <input type="text" name="username">
-    PW <input type="password" name="password">
-    <input type="submit">
-    <input type="hidden" name="next" value="{{ next }}">
+    <hr id='upperline' class='horizon'>
+    <div id='introtext'>
+	Zabo는 미리 등록된 아이디로만 사용이 가능합니다.
+	<br>
+	아이디 등록을 원하시면 zabo@sparcs.org로 메일을 보내주세요.	
+    </div>
+    <hr id='bottomline' class='horizon'>
+    <div id='loginbox'>
+    	<div id='idcontainer' class='idpwcontainer'>
+            <div class='idpwbox'>
+		 ID
+	    </div>
+    	    <input type="text" name="username" class='idtextfield'>
+        </div>
+        <div id='pwcontainer' class='idpwcontainer'>
+            <div class='idpwbox'>
+                 PW
+            </div>
+            <input type="password" name="password" class='idtextfield'>
+        </div>
+        <div>
+            <input type="submit" class='rectangle' value='Sign in'>
+        </div>
+        <input type="hidden" name="next" value="{{ next }}">
+    </div>
 </form>
 {% endblock %}
 {{error}}

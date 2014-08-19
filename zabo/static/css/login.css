@@ -1,0 +1,91 @@
+#upperline
+{
+    margin-top: 80px;
+    margin-bottom: 60px;
+
+}
+
+
+#bottomline
+{
+    margin-bottom: 80px;
+
+}
+
+
+#introtext
+{
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+
+#idcontainer
+{
+    margin-bottom: 20px;
+}
+
+
+#pwcontainer
+{
+    margin-bottom: 50px;
+}
+
+#loginbox
+{
+    width:451px;
+    margin:auto;
+}
+
+
+
+
+.rectangle
+{
+    width:120px;
+    height:35px;
+    border-radius: 5px;
+    background-color:#000000;
+    font-size: 20px;
+    color: #fff;
+    float: right;
+}
+
+.idpwcontainer
+{
+    
+
+}
+
+
+.idpwbox
+{
+    width:120px;
+    height:35px;
+    border-radius: 5px;
+    background-color:#F8B62C;
+    font-weight:bold;
+    font-size: 20px;
+    text-align: center;
+    float: left;
+    margin-right: 27px;
+    line-height: 35px;
+}
+
+.idtextfield
+{
+    width: 300px;
+    height: 35px;
+    border:0;
+    border-bottom:5px solid #000;
+    
+}
+
+.horizon
+{
+    display: block;
+    height: 3px;
+    border: 0; 
+    border-top: 3px solid #f8b62c 
+}
+
