@@ -153,21 +153,24 @@ def edit_article(request, articleID):
     article.activate = activate
     article.comment = comment
 
+    article.save();
+
+    file_to_save = []
     # TODO update article posters...
-    #number_of_files = len(files)
-    #file_to_save = []
-    #if (number_of_files >= 1):
-    #    main_file = files['main0']
-    #    main_poster = Poster(belong_article_main=new_article, picture=main_file)
-    #    file_to_save.append(main_poster)
+    for afile in files :
+        if afile == "main0":
+            article.main_poster.picture = files[afile]
+            file_to_save.append(article.main_poster)
+        else :
+            index = int(afile[3:])
+            if (index < article.sub_poster.length) :
+                article.sub_poster[index].poster.picture = files[afile]
+                file_to_save.append(article.sub_poster[index])
+            else :
+                sub_poster = Poster(belong_article_sub=article, picture=files[afile])
+                file_to_save.append(sub_poster)
 
-    #    if (number_of_files >= 2):
-    #        for count in range(0, number_of_files - 1):
-    #            sub_file = files['sub' + str(count)]
-    #            sub_poster = Poster(belong_article_sub=new_article, picture=sub_file)
-    #            file_to_save.append(sub_poster)
-
-    #file_saved = map(lambda x : x.save(), file_to_save)
+    file_saved = map(lambda x : x.save(), file_to_save)
 
     return HttpResponse("EDIT ARTICLE")
 
