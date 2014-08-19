@@ -1,0 +1,22 @@
+{% extends "board/view.html" %}
+
+{% block header %}
+	{{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/club_info.css">
+{% endblock %}
+
+{% block club_info %}
+<div id="club_info">
+    <div id="club_picture">
+		<img src="{{MEDIA_URL}}{{ profile_image }}" />
+    </div>
+    <div id="club_right">
+        <div id="club_title">
+			{{ club_name }}
+        </div>
+        <div id="club_content">
+			{{ club_comment }}
+        </div>
+    </div>
+</div>
+{% endblock %}

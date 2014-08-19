@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Zabo</title>
+	<meta charset="utf-8"/>
+	<script src="{{STATIC_URL}}js/jquery/jquery-1.11.1.min.js"></script>
+	<script src="{{STATIC_URL}}js/layout.js"></script>
+	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/layout.css">
+	{% block header %}
+	{% endblock %}
+</head>
+<body>
+	<div id="container">
+		<div id="header">
+			<div id="home">
+				<a href="/">
+					<img src="{{MEDIA_URL}}logo.png" />
+				</a>
+			</div>
+			<div class="bar"></div>
+			<div class="menu" id="category">
+				<div class="category">
+					<a href="/">카테고리</a>
+				</div>
+				<div class="subcategory">
+					{% for u, c in choices %}
+					<div><a href="/category/{{u}}/">{{c}}</a></div>
+					{% endfor %}
+				</div>
+			</div>
+			<div class="bar"></div>
+			<div class="menu" id="sitemap">
+				<div class="category">
+					<a href="/">사이트맵</a>
+				</div>
+				<div class="subcategory">
+				</div>
+			</div>
+			<div class="bar"></div>
+			{% if user.is_authenticated %}
+			<div class="logio" id="logout">
+				<a href="/logout/">Logout</a>
+			</div>
+			{% else %}
+			<div class="logio" id="login">
+				<a href="/login/">Login</a>
+			</div>
+			{% endif%}
+			<div id="search">
+				<form id="search" action="/search/">
+					<input id="query" name="query">
+					</input>
+					<button id="submit" type="submit">
+						<img src="{{MEDIA_URL}}search.png" />
+					</button>
+				</form>
+			</div>
+		</div>
+		{% block modalview %}
+		{% endblock %}
+		{% block club_info %}
+		{% endblock %}
+		<div id="content">
+			{% block content %}
+			{% endblock %}
+		</div>
+	</div>
+</body>
+</html>
+

@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block header %}
+<script src="{{STATIC_URL}}js/jquery/jquery-1.11.1.min.js"></script>
+<script src="{{STATIC_URL}}js/jquery/jquery-ui.min.js"></script>
+<script src="{{STATIC_URL}}js/jquery/jquery.file-handler.js"></script>
+<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/themes/smoothness/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/registration.css">
+<script src="{{STATIC_URL}}js/registration.js"></script>
+
+{% endblock %}
+
+{% block content %}
+
+<p id="registration-header">새로운 글 작성</p>
+{% include "registration-form.html" %}
+
+<script>
+$(function() {
+	var poster_file = $('div#poster-file');
+	var file_handler = poster_file.file_handler({
+		'show_thumbnail' : true, 
+		'type_list' : [{
+			name : 'main',
+			default_file : [],
+			minimum : 1,
+			maximum : 1,
+		},    
+		{     
+			name : 'sub',
+			default_file : [],
+			minimum : 1,
+			maximum : 3,
+		},]   
+	}).data('file-handler');
+});
+</script>
+
+{% endblock %}

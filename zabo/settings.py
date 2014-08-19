@@ -10,6 +10,11 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
+TEMPLATE_CONTEXT_PROCESSORS += (
+        'django.core.context_processors.request',
+        'zabo.utils.context_processors.layout_category',
+)
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 ADMINS = (
@@ -40,7 +45,11 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'zabo',
     'zabo.apps.account',
-)
+    'zabo.apps.board',
+    'zabo.apps.club',
+    'zabo.apps.main',
+    'endless_pagination'
+    )
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -113,6 +122,8 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
 )
+
+LOGIN_URL = '/login/'
 
 # custom server settings
 try:
