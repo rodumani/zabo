@@ -75,11 +75,11 @@ def get_ctx(articles):
             space = determine_space(len(l), length)
             line = []
             for i in range(len(l)): # determine the margin-left/right
-                line.append([l[i][0], space[i*3]-1, space[i*3+1]-1, space[i*3+2], l[i][1]])
+                line.append([l[i][0], space[i*3]-1, space[i*3+1]-1, space[i*3+2], l[i][1], l[i][2]])
             all.append(line)
             l = []
             length = 0
-        l.append((picture.url, article.writer))
+        l.append((picture.url, article.writer, article.id))
         length += new_width
 
     if length != 0:

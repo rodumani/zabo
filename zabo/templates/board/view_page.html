@@ -5,7 +5,7 @@
 <div class='line'>
 {% for article in articles_line %}
 <div class='poster' style="margin-right:{{article.3}}px">
-    <img src = {{article.0}} style="height:{{picture_height}}px;margin-left:{{article.1}}px;margin-right:{{article.2}}px">
+    <img src = {{article.0}} style="height:{{picture_height}}px;margin-left:{{article.1}}px;margin-right:{{article.2}}px" onclick="openModal({{article.5}})">
     <div class='hover_div'>
         <div class='hover'>  
             <span class="hover_text"> by {{article.4}} </span>
