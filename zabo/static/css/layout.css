@@ -70,6 +70,11 @@ a
     text-align:center;
 }
 
+.menu.mouseover
+{
+    background-color:#35AE9D;
+}
+
 .menu > div.category
 {
     height:inherit;
@@ -124,6 +129,7 @@ form#search *
 {
     outline:none;
     vertical-align:middle;
+    border:0;
 }
 
 #query

@@ -1,11 +1,51 @@
 {% extends "layout.html" %}
+{% block header %}
+	<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/view.css">
+	<script src="{{STATIC_URL}}js/view.js"></script>
+{% endblock %}
+
+{% block modalview %}
+<div id="modalOpen" class="modalDialog">
+	<div>
+		<a href="#modalClose" title="Close" class="modalClose">X</a>
+		<div id="modalTitle">
+			[신입생 모집] SPARCS 오픈 동방 & 신입생 모집
+		</div>
+		<div class="modalLine">
+			<div class="modalDesc">
+				단체이름
+			</div>
+			<div id="modalWriter" class="modalComment">
+				SPARCS
+			</div>
+		</div>
+		<div id="modalPictures">
+			<img src="{{MEDIA_URL}}pictures/8.png" id="mainPicture">
+			<img src="{{MEDIA_URL}}pictures/9.jpg" class="subPicture">
+			<img src="{{MEDIA_URL}}pictures/1.jpg" class="subPicture">
+			<img src="{{MEDIA_URL}}pictures/6.png" class="subPicture">
+		</div>
+		<div class="modalLine">
+			<div class="modalDesc">
+				기간
+			</div>
+			<div id="modalPeriod" class="modalComment">
+				2014.3.15 ~ 2014.3.20
+			</div>
+		</div>
+		<div id="modalContent">
+			안녕하세요. SPARCS입니다!
+		</div>
+	</div>
+</div>
+{% endblock %}
+
 {% block content %}
 
 {% include page_template %}
 
 {% block js %}
     {{ extend }}
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="{{ STATIC_URL }}endless_pagination/js/endless-pagination.js"></script>
     <script>$.endlessPaginate({paginateOnScroll: true});</script>
 {% endblock %}

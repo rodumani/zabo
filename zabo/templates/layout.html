@@ -18,33 +18,22 @@
 				</a>
 			</div>
 			<div class="bar"></div>
-			<div class="menu" id="newbie">
+			<div class="menu" id="category">
 				<div class="category">
-					<a href="/">신입생 모집</a>
+					<a href="/">카테고리</a>
 				</div>
 				<div class="subcategory">
-					<div><a href="/">category1</a></div>
-					<div><a href="/">category2</a></div>
+					{% for u, c in choices %}
+					<div><a href="/category/{{u}}/">{{c}}</a></div>
+					{% endfor %}
 				</div>
 			</div>
 			<div class="bar"></div>
-			<div class="menu" id="perform">
+			<div class="menu" id="sitemap">
 				<div class="category">
-					<a href="/">동아리 공연</a>
+					<a href="/">사이트맵</a>
 				</div>
 				<div class="subcategory">
-					<div><a href="/">category1</a></div>
-					<div><a href="/">category2</a></div>
-				</div>
-			</div>
-			<div class="bar"></div>
-			<div class="menu" id="temp">
-				<div class="category">
-					<a href="/">얘도 카테고리</a>
-				</div>
-				<div class="subcategory">
-					<div><a href="/">category1</a></div>
-					<div><a href="/">category2</a></div>
 				</div>
 			</div>
 			<div class="bar"></div>
@@ -67,6 +56,8 @@
 				</form>
 			</div>
 		</div>
+		{% block modalview %}
+		{% endblock %}
 		{% block club_info %}
 		{% endblock %}
 		<div id="content">

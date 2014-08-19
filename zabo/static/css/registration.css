@@ -14,10 +14,22 @@
     text-align : center;
     position : relative;
     width : 16%;
-    padding-top:4px;
     padding-left : 15px;
     padding-right : 15px;
 }
+
+.form-label-div {
+    display: inline-block;
+}
+
+.form-label-span {
+    display : table-cell;
+    vertical-align : middle;
+    margin : auto;
+    height : 33px;
+    font-weight : bold;
+}
+
 
 .form-col {
     width : 80%;
@@ -63,6 +75,7 @@ textarea.form-control {
     margin-top : 0px;
     width : 120px;
     padding : 6px 12px;
+    font-size : 14px;
     display : block;
     float : left;
 }
@@ -103,7 +116,7 @@ textarea.form-control {
 #registration-form .form-label {
     background-color : #76CCE7;
     width : 100px;
-    height : 29px;
+    height : 33px;
     font-weight : bold;
 }
 
@@ -117,11 +130,24 @@ p#registration-header {
     display:none;
 }
 
+#registration-title {
+    width: 700px;
+}
+
+#registration-title-count {
+    display : inline-block;
+    float:right;
+    margin-top : 7px;
+    text-align : right;
+    vertical-align : middle;
+    font-weight : bold;
+}
+
 div#poster-file input[type="file"] {
     background-color : #ffffff;
+    border : 0px;
     padding : 0px;
     height : 22px;
-    width : 90%;
     padding : 5px;
 }
 
@@ -139,6 +165,7 @@ div#poster-file input[type="file"] {
 @media screen and (-webkit-min-device-pixel-ratio:0) {
     #registration-form select {
         -webkit-appearance: none;
+        -webkit-border-radius: 0px;
     }
 
     #registration-form #registration-category .input-group-addon {
