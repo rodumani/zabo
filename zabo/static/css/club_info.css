@@ -2,7 +2,7 @@
 {
     display:inline-block;
     width:100%;
-    height:204px;
+    height:196px;
     border:2px solid #95D3CE;
     margin-bottom:15px;
 }
@@ -11,6 +11,17 @@
 {
     float:left;
     width:225px;
+    height:196px;
+    line-height:196px;
+    text-align:center;
+    font-size:0;
+}
+
+#club_picture img
+{
+    display:inline-block;
+    max-height:196px;
+    max-width:200px;
 }
 
 #club_right
