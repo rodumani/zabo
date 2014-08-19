@@ -12,11 +12,11 @@ import json
 # Create your views here.
 
 MAX_HEIGHT = 180
-PAGE_WIDTH = 1024
+PAGE_WIDTH = 984
 MAX_WIDTH = PAGE_WIDTH * 0.9 # For good look
 def determine_space(N, length):
     remaining_width = int(PAGE_WIDTH - length) - 1
-    space_n = 3 * N - 1
+    space_n = N - 1
     space_width = remaining_width / space_n
     space_interval = [space_width] * (space_n - (remaining_width % space_n)) 
     space_interval += [space_width + 1] * (remaining_width % space_n)
@@ -68,14 +68,16 @@ def get_ctx(articles):
     all = []
     l = []
     length = 0
+    minimum = MAX_WIDTH
     for article in articles:
         picture = article.main_poster.picture
         new_width = MAX_HEIGHT * picture.width / picture.height
         if length + new_width > MAX_WIDTH:
             space = determine_space(len(l), length)
+            minimum = min(minimum, space[0])
             line = []
-            for i in range(len(l)): # determine the margin-left/right
-                line.append([l[i][0], space[i*3]-1, space[i*3+1]-1, space[i*3+2], l[i][1], l[i][2]])
+            for i in range(len(l)): # determine the margin
+                line.append([l[i][0], l[i][1], l[i][2], space[i]])
             all.append(line)
             l = []
             length = 0
@@ -84,12 +86,11 @@ def get_ctx(articles):
 
     if length != 0:
         line = []
-        if length + 30*len(l) <= PAGE_WIDTH:
-            for i in range(len(l)):
-                line.append([l[i][0], 10, 10, 10, l[i][1]])
-        else:
-            for i in range(len(l)):
-                line.append([l[i][0], 5, 5, 5, l[i][1]])
+        for i in range(len(l)):
+            if i == len(l) - 1:
+                line.append([l[i][0], l[i][1], l[i][2], 0])
+            else:
+                line.append([l[i][0], l[i][1], l[i][2], minimum])
         all.append(line)
 
     page_template = 'board/view_page.html'
