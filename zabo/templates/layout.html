@@ -20,7 +20,7 @@
 			<div class="bar"></div>
 			<div class="menu" id="category">
 				<div class="category">
-					<a href="/">카테고리</a>
+					<a href="/">{{current_category|default:"카테고리"}}</a>
 				</div>
 				<div class="subcategory">
 					{% for u, c in choices %}
