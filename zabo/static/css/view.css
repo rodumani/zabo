@@ -127,8 +127,6 @@
     visibility: hidden;
 }
 
-
-
 .hover 
 {
     position:absolute;
@@ -142,4 +140,15 @@
     white-space: nowrap;
     width: 100%;
     text-align: right;
+}
+
+.largeHeightPicture
+{
+    margin-top: 8% !important;
+    height: 80% !important;
+}
+
+.largeWidthPicture{
+    width: 90%;
+    height: auto !important;
 }
