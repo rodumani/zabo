@@ -95,7 +95,6 @@ def get_ctx(articles):
     return ctx
 
 def get_detail(request):
-    print request
     article_id = request.GET['article_id']
     
     if not Article.objects.filter(id=article_id).exists():
@@ -106,7 +105,7 @@ def get_detail(request):
         'title' : '[' + article.get_category_display() + '] ' + article.title,
         'writer_name' : article.writer.profile.club_name,
         'main_picture' : article.main_poster.picture.url,
-        'sub_pictrues' : sub_pictures,
+        'sub_pictures' : sub_pictures,
         'start_time' : article.start_datetime.date(),
         'end_time' : article.end_datetime.date(),
         'content' : article.comment
