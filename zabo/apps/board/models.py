@@ -53,10 +53,10 @@ class Poster(models.Model):
         """returns itself"""
         return self
     def __json__(self):
-        return json.dumps({
+        return {
             'file' : os.path.basename(self.picture.name),
             'url' : self.picture.url,
-            })
+            }
 
 class ArticleAdmin(admin.ModelAdmin):
     list_display = ('writer', 'title', 'category', 'start_datetime', 'end_datetime', 'activate', 'comment')
