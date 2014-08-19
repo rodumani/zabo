@@ -23,8 +23,8 @@
 					<a href="/">카테고리</a>
 				</div>
 				<div class="subcategory">
-					{% for n, c in choices %}
-					<div><a href="/">{{c}}</a></div>
+					{% for u, c in choices %}
+					<div><a href="/{{u}}/">{{c}}</a></div>
 					{% endfor %}
 				</div>
 			</div>

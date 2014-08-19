@@ -11,6 +11,8 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^club/(?P<name>[a-zA-Z]+)/', 'zabo.apps.club.views.view'),
+    url(r'^fresh/', 'zabo.apps.board.views.view'),
+    url(r'^event/', 'zabo.apps.board.views.view'),
     url(r'^registration/', include('zabo.apps.registration.urls')),
     url(r'^board/', include('zabo.apps.board.urls')),
     url(r'^login/', 'zabo.apps.account.views.login'),
