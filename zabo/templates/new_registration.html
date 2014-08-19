@@ -1,90 +1,39 @@
 {% extends "layout.html" %}
 
 {% block header %}
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
+<script src="{{STATIC_URL}}js/jquery/jquery-1.11.1.min.js"></script>
+<script src="{{STATIC_URL}}js/jquery/jquery-ui.min.js"></script>
+<script src="{{STATIC_URL}}js/jquery/jquery.file-handler.js"></script>
 <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/themes/smoothness/jquery-ui.css" />
 <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/registration.css">
 <script src="{{STATIC_URL}}js/registration.js"></script>
+
 {% endblock %}
 
 {% block content %}
-<h1>게시글을 등록해 주세요</h1>
-<form method="post" action="add_article/" enctype="multipart/form-data" style="width:700px">
-{% csrf_token %}
-	<div class="form-group">
-        <label class="form-label">카테고리</label>
-		<div class="form-col">
-			<select name="category" class="form-control">
-				{% for category in category_choice %}
-				<option value="{{category.0}}">{{category.1}}</option>
-				{% endfor %}
-			</select>
-		</div>
-    </div>
 
-	<div class="form-group">
-        <label class="form-label">제목</label>
-		<div class="form-col">
-        	<input type="text" name="title" class="form-control"/>
-		</div>
-    </div>
+<p id="registration-header">새로운 글 작성</p>
+{% include "registration-form.html" %}
 
-	<div class="form-group" id="board-comment">
-        <label class="form-label">내용</label>
-		<div class="form-col">
-        	 <textarea rows="20" name="comment" class="form-control"></textarea>
-		</div>
-    </div>
+<script>
+$(function() {
+	var poster_file = $('div#poster-file');
+	var file_handler = poster_file.file_handler({
+		'show_thumbnail' : true, 
+		'type_list' : [{
+			name : 'main',
+			default_file : [],
+			minimum : 1,
+			maximum : 1,
+		},    
+		{     
+			name : 'sub',
+			default_file : [],
+			minimum : 1,
+			maximum : 3,
+		},]   
+	}).data('file-handler');
+});
+</script>
 
-	<div class="form-group">
-        <label class="form-label">기간</label>
-		<div class="form-col">
-			<div class="form-control floating">
-				<div class="input-group">
-					<input type="text" name="start_date" class="ui-datepicker-input" id="start_date"/>
-					<span class="input-group-addon">[]</span>
-				</div>
-			</div>
-			<div class="form-control floating">
-				<label style="display:table-cell; height:32px; vertical-align:middle;">~&nbsp;</label>
-			</div>
-			<div class="form-control floating">
-				<div class="input-group">
-					<input type="text" name="end_date" class="ui-datepicker-input" id="end_date"/>
-					<span class="input-group-addon">[]</span>
-				</div>
-			</div>
-		</div>
-    </div>
-    <div class="form-group">
-        <label class="form-label">활성화</label>
-		<div class="form-col">
-			<div class="form-control">
-				<div class="input-radio">
-					<input type="radio" name="activate" value="on" checked/> On
-					&nbsp;
-					<input type="radio" name="activate" value="off"/> Off
-				</div>
-			</div>
-		</div>
-    </div>
-    <div class="form-group">
-		<label class="form-label">파일 첨부</label>
-		<div class="form-col">
-			<div class="form-control">
-				<div class="input-file">
-					<div id="poster_file">
-						<!-- should be like
-							<input type="file" name="main"/>
-							<input type="file" name="sub1"/>
-							<button id="add_sub_image">+</button>
-						-->
-					</div>
-				</div>
-			</div>
-		</div>
-    </div>
-	<input type="submit" value="글쓰기 완료"/>
-</form>
 {% endblock %}

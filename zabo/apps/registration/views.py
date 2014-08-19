@@ -11,6 +11,7 @@ from zabo.apps.board.models import Article, Poster
 from datetime import datetime
 from PIL import Image
 
+# App library
 
 def convert_str_to_date(str_date):
     try :
@@ -23,6 +24,37 @@ def convert_date_to_str(date):
         return datetime.strftime(date, '%Y/%m/%d')
     except :
         return None
+
+def validate_article(category, title, start_date, end_date, activate, \
+        comment, files):
+
+    # check all parameter is set
+    if title == '' :
+        return {'status' : 400, 'msg' : 'Title field is blank'}
+
+    # check category field value
+    # XXX choice_list variable could be cached?
+    choice_list = map(lambda x : x[0], Article._meta.get_field('category').choices)
+    if category not in choice_list:
+        return {'status' : 400, 'msg' : 'Category field value is not right'}
+
+    # check date
+    if (start_date == None or end_date == None):
+        return {'status' : 400, 'msg' : 'Date field value is not right ' + \
+                start_date_str + ', ' + end_date_str}
+    if (start_date > end_date):
+        return {'status' : 400, 'msg' : 'Start date cannot be after end date'}
+
+    for afile in files :
+        try :
+            Image.open(files[afile]).verify()
+
+        except IOError:
+            return {'status' : 400, 'msg' : 'Poster image is not valid'}
+
+    return None
+
+# Page render function
 
 @login_required
 def new_registration(request):
@@ -40,11 +72,12 @@ def edit_registration(request, articleID):
 
     return render_to_response('edit_registration.html', {
         'category_choice' : Article._meta.get_field('category').choices,
-        'article' : article,
-        'start_date' : convert_date_to_str(article.start_datetime),
-        'end_date' : convert_date_to_str(article.end_datetime),
+        'articleID' : articleID,
         }, context_instance=RequestContext(request))
 
+# API Call
+
+@login_required
 def add_article(request):
 
     category = int(request.POST['category'])
@@ -56,30 +89,14 @@ def add_article(request):
     files = request.FILES
     user = request.user
     
-    if (not user.is_authenticated()):
-        return HttpResponse('User not authorized', status=401)
-
-    # parameter check
-    if title == '' or start_date_str == '' or end_date_str == '' or \
-            activate_str == '':
-        return HttpResponseBadRequest('Not enough parameter')
-
-    # category check
-    choice_list = map(lambda x : x[0], Article._meta.get_field('category').choices)
-    if category not in choice_list:
-        return HttpResponseBadRequest('Category field value is not right')
-
-    # start, end date check ex)2014/07/27
     start_date = convert_str_to_date(start_date_str)
     end_date = convert_str_to_date(end_date_str)
-    if (start_date == None or end_date == None):
-        return HttpResponseBadRequest('Date field value is not right ' + \
-                start_date_str + ', ' + end_date_str)
-    if (start_date > end_date):
-        return HttpResponseBadRequest('Start date cannot be after end date')
-
-    # check activate
     activate = True if activate_str == 'on' else False
+
+    validate = validate_article(category, title, start_date, end_date, \
+            activate_str, comment, files)
+    if validate != None:
+        return HttpResponse(validate['msg'], status=validate['status'])
 
     # create board instance and save
     new_article = Article.objects.create(writer=user, title=title, \
@@ -89,26 +106,69 @@ def add_article(request):
     number_of_files = len(files)
     file_to_save = []
     if (number_of_files >= 1):
-        try :
-            main_file = files['main0']
-            main_poster = Poster(belong_article_main=new_article, picture=main_file)
-            Image.open(main_file).verify()
-            file_to_save.append(main_poster)
+        main_file = files['main0']
+        main_poster = Poster(belong_article_main=new_article, picture=main_file)
+        file_to_save.append(main_poster)
 
-            if (number_of_files >= 2):
-                for count in range(0, number_of_files - 1):
-                    sub_file = files['sub' + str(count)]
-                    Image.open(sub_file).verify()
-                    sub_poster = Poster(belong_article_sub=new_article, picture=sub_file)
-                    file_to_save.append(sub_poster)
-
-        except IOError:
-            return HttpResponseBadRequest('Poster image is not valid')
+        if (number_of_files >= 2):
+            for count in range(0, number_of_files - 1):
+                sub_file = files['sub' + str(count)]
+                sub_poster = Poster(belong_article_sub=new_article, picture=sub_file)
+                file_to_save.append(sub_poster)
 
     file_saved = map(lambda x : x.save(), file_to_save)
     return HttpResponse("ADD ARTICLE")
 
-def edit_article(request):
+@login_required
+def edit_article(request, articleID):
+
+    article = Article.objects.get(id=articleID)
+
+    if (request.user != article.writer):
+        return HttpResponse('User does not own the article', status=401)
+
+    category = int(request.POST['category'])
+    title = request.POST.get('title', '').strip()
+    start_date_str = request.POST.get('start_date', '').strip()
+    end_date_str = request.POST.get('end_date', '').strip()
+    activate_str = request.POST.get('activate', '').strip()
+    comment = request.POST['comment'].strip()
+    files = request.FILES
+    user = request.user
+
+    start_date = convert_str_to_date(start_date_str)
+    end_date = convert_str_to_date(end_date_str)
+    activate = True if activate_str == 'on' else False
+
+    validate = validate_article(category, title, start_date, end_date, \
+            activate_str, comment, files)
+
+    if validate != None:
+        return HttpResponse(validate['msg'], status=validate['status'])
+
+    article.category = category
+    article.title = title
+    article.start_date = start_date
+    article.end_date = end_date
+    article.activate = activate
+    article.comment = comment
+
+    # TODO update article posters...
+    #number_of_files = len(files)
+    #file_to_save = []
+    #if (number_of_files >= 1):
+    #    main_file = files['main0']
+    #    main_poster = Poster(belong_article_main=new_article, picture=main_file)
+    #    file_to_save.append(main_poster)
+
+    #    if (number_of_files >= 2):
+    #        for count in range(0, number_of_files - 1):
+    #            sub_file = files['sub' + str(count)]
+    #            sub_poster = Poster(belong_article_sub=new_article, picture=sub_file)
+    #            file_to_save.append(sub_poster)
+
+    #file_saved = map(lambda x : x.save(), file_to_save)
+
     return HttpResponse("EDIT ARTICLE")
 
 def remove_article(request):

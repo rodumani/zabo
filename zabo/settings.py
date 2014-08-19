@@ -13,6 +13,7 @@ import os
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
 TEMPLATE_CONTEXT_PROCESSORS += (
         'django.core.context_processors.request',
+        'zabo.utils.context_processors.layout_category',
 )
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 

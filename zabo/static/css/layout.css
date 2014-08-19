@@ -2,7 +2,7 @@
 {
     margin:0;
     padding:0;
-    border:0;
+    font-family: '맑은 고딕';
 }
 
 html
@@ -15,6 +15,7 @@ body
 {
     height:100%;
     width:100%;
+    text-align:center;
 }
 
 a
@@ -25,8 +26,8 @@ a
 #container
 {
     width:1024px;
-    height:100%;
-    margin:0 auto;
+    background-color:#F0F0F0;
+    display:inline-block;
 }
 
 #header
@@ -68,6 +69,11 @@ a
     height:inherit;
     width:142px;
     text-align:center;
+}
+
+.menu.mouseover
+{
+    background-color:#35AE9D;
 }
 
 .menu > div.category
@@ -124,6 +130,7 @@ form#search *
 {
     outline:none;
     vertical-align:middle;
+    border:0;
 }
 
 #query
@@ -156,4 +163,5 @@ form#search *
 #content
 {
     float:left;
+    width:inherit;
 }

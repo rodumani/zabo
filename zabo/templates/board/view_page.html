@@ -4,10 +4,14 @@
 {% for articles_line in chosen %}
 <div class='line'>
 {% for article in articles_line %}
-<div class='poster' style="background-color:#000000;float:left;margin-top:10px">
-    <img src = {{article.0}} style="height:{{picture_height}}px;margin-left:{{article.1}}px;margin-right:{{article.2}}px" onclick="openModal({{article.4}})">
+<div class='poster' style="margin-right:{{article.3}}px">
+    <img src = {{article.0}} style="height:{{picture_height}}px" onclick="openModal({{article.2}})">
+    <div class='hover_div'>
+        <div class='hover'>  
+            <span class="hover_text"> by {{article.1}} </span>
+        </div>
+    </div>
 </div>
-<div class='blank' style="height:{{picture_height}}px;width:{{article.3}}px;float:left"></div>
 {% endfor %}
 </div>
 {% endfor %}

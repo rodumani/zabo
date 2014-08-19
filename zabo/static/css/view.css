@@ -102,3 +102,44 @@
     margin-left: 10px;
     margin-right: 10px;
 }
+
+.poster
+{
+    float:left;
+    height:180px;
+    position:relative;
+}
+
+.poster:hover .hover_div
+{
+    visibility: visible;
+}
+
+.line
+{
+    float:left;
+    margin-top:10px;
+    margin-left:20px;
+}
+
+.hover_div 
+{
+    visibility: hidden;
+}
+
+
+
+.hover 
+{
+    position:absolute;
+    background: rgba(51,51,51,0.8);
+    margin-left: 0;
+    right: 0;
+    bottom: 0;
+    color: #fff;
+    font: normal 11px arial,sans-serif;
+    line-height: 100%;
+    white-space: nowrap;
+    width: 100%;
+    text-align: right;
+}
