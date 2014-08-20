@@ -14,38 +14,45 @@
 {% include "registration-form.html" %}
 
 <script>
-
-var init_form = function (article) {
-	console.log(article);
-
-	$('#registration-title').val(article.title);
-
-	var startStr = article.start_time.replace(/-/g, '/');
-	var endStr = article.end_time.replace(/-/g, '/');
-	$('#start_date').val(startStr);
-	$('#end_date').val(endStr).datepicker('option', 'minDate', startStr);
-
-	$('#registration-comment').val(article.content);
-
-	var poster_file = $('div#poster-file');
-	var file_handler = poster_file.file_handler({
-		'show_thumbnail' : true, 
-		'type_list' : [{
-			name : 'main',
-			default_file : article.main_picture ? [article.main_picture.file] : [],
-			minimum : 1,
-			maximum : 1,
-		},    
-		{     
-			name : 'sub',
-			default_file : $.map(article.main_picture, function (v, i) { return v.file; }),
-			minimum : 1,
-			maximum : 3,
-		},]   
-	}).data('file-handler');
-};
-
 $(function() {
+	var init_form = function (article) {
+
+		var title_counter = $('#registration-title-count');
+		var title = $('input#registration-title');
+		title.val(article.title);
+
+		var len = title.val().length;
+		if (len > 80 ){
+			title_counter.css('color', 'red');
+		} else {
+			title_counter.css('color', 'black');
+		}
+		title_counter.text(title.val().length + ' / ' + 80);
+
+		var startStr = article.start_time.replace(/-/g, '/');
+		var endStr = article.end_time.replace(/-/g, '/');
+		$('#start_date').val(startStr);
+		$('#end_date').val(endStr).datepicker('option', 'minDate', startStr);
+
+		$('#registration-comment').text(article.comment);
+
+		var poster_file = $('div#poster-file');
+		var file_handler = poster_file.file_handler({
+			'show_thumbnail' : true, 
+			'type_list' : [{
+				name : 'main',
+				default_file : article.main_picture ? [article.main_picture.file] : [],
+				minimum : 1,
+				maximum : 1,
+			},    
+			{     
+				name : 'sub',
+				default_file : $.map(article.main_picture, function (v, i) { return v.file; }),
+				minimum : 1,
+				maximum : 3,
+			},]   
+		}).data('file-handler');
+	};
 
 	$.ajax({
 		url : '/board/get_detail/',
@@ -60,7 +67,29 @@ $(function() {
 			console.log(textStatus);
 		},
 	});
-		
+
+	var registration_form = $('#registration-form');
+	registration_form.submit(function(e) {
+		$.ajax({
+			url : '/registration/edit/{{articleID}}/',
+			mimeType : "multipart/form-data",
+			type : 'POST',
+			contentType: false,
+			cache: false,
+			processData:false,
+			data : new FormData(this),
+			success : function(data, textStatus) {
+				//console.log(data);
+				window.location = '/main/';
+			},
+			error : function  (jqXHR, textStatus, errThrown) {
+				console.log(jqXHR.responseText);
+				console.log(jqXHR.status);
+			},
+		});
+		e.preventDefault();
+		return false;
+	});
 
 });
 </script>

@@ -34,7 +34,7 @@ class Article(models.Model):
                 'file' : os.path.basename(self.main_poster.picture.name),
                 'url' : self.main_poster.picture.url 
                 },    
-            'sub_pictrues' : sub_pictures,
+            'sub_pictures' : sub_pictures,
             'start_time' : str(self.start_datetime.date()),
             'end_time' : str(self.end_datetime.date()),
             'comment' : self.comment
@@ -53,10 +53,10 @@ class Poster(models.Model):
         """returns itself"""
         return self
     def __json__(self):
-        return json.dumps({
+        return {
             'file' : os.path.basename(self.picture.name),
             'url' : self.picture.url,
-            })
+            }
 
 class ArticleAdmin(admin.ModelAdmin):
     list_display = ('writer', 'title', 'category', 'start_datetime', 'end_datetime', 'activate', 'comment')

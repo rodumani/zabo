@@ -1,5 +1,5 @@
 
-<form method="post" id="registration-form" action="add_article/" enctype="multipart/form-data">
+<form method="post" id="registration-form" action="#" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="form-group" id="registration-category">
         <div class="form-label">
@@ -73,7 +73,7 @@
             </div>
         </div>
         <div class="form-col">
-            <div class="form-control">
+            <div class="form-control" id="registration-activate">
                 <div class="input-radio">
                     <input type="radio" name="activate" value="on" checked/> On
                     &nbsp;

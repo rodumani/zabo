@@ -33,6 +33,27 @@ $(function() {
 			maximum : 3,
 		},]   
 	}).data('file-handler');
+
+	var registration_form = $('#registration-form');
+	registration_form.submit(function(e) {
+		$.ajax({
+			url : '/registration/add/',
+			mimeType : "multipart/form-data",
+			type : 'POST',
+			contentType: false,
+			cache: false,
+			processData:false,
+			data : new FormData(this),
+			success : function(data, textStatus) {
+				window.location = '/main/';
+			},
+			error : function  (jqXHR, textStatus) {
+				console.log(textStatus);
+			},
+		});
+		e.preventDefault();
+		return false;
+	});
 });
 </script>
 

@@ -20,7 +20,7 @@
 			<div class="bar"></div>
 			<div class="menu" id="category">
 				<div class="category">
-					<a href="/">카테고리</a>
+					<a href="/">{{current_category|default:"카테고리"}}</a>
 				</div>
 				<div class="subcategory">
 					{% for u, c in choices %}
@@ -38,12 +38,20 @@
 			</div>
 			<div class="bar"></div>
 			{% if user.is_authenticated %}
-			<div class="logio" id="logout">
-				<a href="/logout/">Logout</a>
+			<div class="logio">
+				<div id="account_profile">
+					<img src="{{MEDIA_URL}}{{ user.profile.profile_image }}" />
+				</div>
+				<div id="account_action">
+					<div id="arrow"></div>
+					<div class="account_menu" id="account_name">{{ user.profile.club_name_en}} 님</div>
+					<div class="account_menu"><a href="/registration/">새로운 글쓰기</a></div>
+					<div class="account_menu"><a href="/logout/">LOGOUT</a></div>
+				</div>
 			</div>
 			{% else %}
 			<div class="logio" id="login">
-				<a href="/login/">Login</a>
+				<a href="/login/">LOGIN</a>
 			</div>
 			{% endif%}
 			<div id="search">
