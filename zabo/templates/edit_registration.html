@@ -1,59 +1,97 @@
 {% extends "layout.html" %}
 
 {% block header %}
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="{{STATIC_URL}}js/jquery/jquery-1.11.1.min.js"></script>
+<script src="{{STATIC_URL}}js/jquery/jquery-ui.min.js"></script>
+<script src="{{STATIC_URL}}js/jquery/jquery.file-handler.js"></script>
+<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/themes/smoothness/jquery-ui.css" />
 <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/registration.css">
 <script src="{{STATIC_URL}}js/registration.js"></script>
 {% endblock %}
 
 {% block content %}
-<h1>게시글을 수정해 주세요</h1>
-<form method="post" action="edit_article/" enctype="multipart/form-data">
-{% csrf_token %}
-<div>
-    <div>
-        <span>카테고리</span>
-        <select name="category">
-            {% for category in category_choice %}
-			{% ifequal category.0 article.category %}
-            <option value="{{category.0}}" selected>{{category.1}}</option>
-			{% else %}
-            <option value="{{category.0}}">{{category.1}}</option>
-			{% endifequal %}
-            {% endfor %}
-        </select>
-    </div>
-    <div>
-        <span>제목</span>
-		<input type="text" name="title" value="{{ article.title }}"/>
-    </div>
-    <div>
-		<textarea name="comment" value="{{ article.comment }}"></textarea>
-    </div>
+<p id="registration-header">글 수정</p>
+{% include "registration-form.html" %}
 
-    <div>
-        <span>기간</span>
-		<input type="text" name="start_date" value="{{ start_date }}"/> ~
-		<input type="text" name="end_date" value="{{ end_date }}"/>
-    </div>
-    <div>
-        <span>활성화</span>
-		{% if article.activate %}
-		<input type="radio" name="activate" value="on" checked/>On
-		<input type="radio" name="activate" value="off"/>Off
-		{% else %}
-		<input type="radio" name="activate" value="on"/>On
-		<input type="radio" name="activate" value="off" checked/>Off
-		{% endif %}
-    </div>
-    <div>
-        <span>파일 첨부</span><br>
-        <div id="poster_file">
-			<!-- show already posted images -->
-        </div>
-    </div>
+<script>
+$(function() {
+	var init_form = function (article) {
 
-</div>
-<input type="submit" value="글쓰기 완료"/>
-</form>
+		var title_counter = $('#registration-title-count');
+		var title = $('input#registration-title');
+		title.val(article.title);
+
+		var len = title.val().length;
+		if (len > 80 ){
+			title_counter.css('color', 'red');
+		} else {
+			title_counter.css('color', 'black');
+		}
+		title_counter.text(title.val().length + ' / ' + 80);
+
+		var startStr = article.start_time.replace(/-/g, '/');
+		var endStr = article.end_time.replace(/-/g, '/');
+		$('#start_date').val(startStr);
+		$('#end_date').val(endStr).datepicker('option', 'minDate', startStr);
+
+		$('#registration-comment').text(article.comment);
+
+		var poster_file = $('div#poster-file');
+		var file_handler = poster_file.file_handler({
+			'show_thumbnail' : true, 
+			'type_list' : [{
+				name : 'main',
+				default_file : article.main_picture ? [article.main_picture.file] : [],
+				minimum : 1,
+				maximum : 1,
+			},    
+			{     
+				name : 'sub',
+				default_file : $.map(article.main_picture, function (v, i) { return v.file; }),
+				minimum : 1,
+				maximum : 3,
+			},]   
+		}).data('file-handler');
+	};
+
+	$.ajax({
+		url : '/board/get_detail/',
+		type : 'GET',
+		data : {
+			'article_id' : {{articleID}},
+		},
+		success : function (data, textStatus) {
+			init_form($.parseJSON(data));
+		},
+		error : function  (jqXHR, textStatus) {
+			console.log(textStatus);
+		},
+	});
+
+	var registration_form = $('#registration-form');
+	registration_form.submit(function(e) {
+		$.ajax({
+			url : '/registration/edit/{{articleID}}/',
+			mimeType : "multipart/form-data",
+			type : 'POST',
+			contentType: false,
+			cache: false,
+			processData:false,
+			data : new FormData(this),
+			success : function(data, textStatus) {
+				//console.log(data);
+				window.location = '/main/';
+			},
+			error : function  (jqXHR, textStatus, errThrown) {
+				console.log(jqXHR.responseText);
+				console.log(jqXHR.status);
+			},
+		});
+		e.preventDefault();
+		return false;
+	});
+
+});
+</script>
+
 {% endblock %}

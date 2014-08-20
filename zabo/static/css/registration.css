@@ -1,4 +1,5 @@
 
+
 .ui-datepicker { font-size:11px; }
 
 .form-group {
@@ -10,16 +11,28 @@
 
 .form-label {
     float:left; 
-    text-align : right;
+    text-align : center;
     position : relative;
     width : 16%;
-    padding-top:4px;
     padding-left : 15px;
     padding-right : 15px;
 }
 
+.form-label-div {
+    display: inline-block;
+}
+
+.form-label-span {
+    display : table-cell;
+    vertical-align : middle;
+    margin : auto;
+    height : 33px;
+    font-weight : bold;
+}
+
+
 .form-col {
-    width : 70%;
+    width : 80%;
     position : relative;
     min-height : 1px;
     float : left;
@@ -39,27 +52,30 @@
 }
 
 select.form-control {
-    width : 20%;
-    height : 32px;
+    width : 30%;
+    height : 33px;
 }
 
 input.form-control {
     padding : 6px 0px 6px 12px;
+    height : 19px;
 }
 
 textarea.form-control {
     height : auto;
-    padding : 6px 2px 6px 12px;
+    padding : 6px 0px 6px 12px;
 }
 
-.form-control .input-radio, .form-control .input-file {
+.form-control .input-radio {
     margin-top : 7px;
 }
 
 .form-control div.input-group input {
+    height : 19px;
     margin-top : 0px;
     width : 120px;
     padding : 6px 12px;
+    font-size : 14px;
     display : block;
     float : left;
 }
@@ -67,6 +83,99 @@ textarea.form-control {
 .input-group .input-group-addon {
     display : table-cell;
     vertical-align : middle;
-    height : 27px;
+    height : 31px;
     padding : 0px 4px;
 }
+/*
+ * custom
+ */
+
+
+#registration-form {
+    width : inherit;
+    margin-top : 10px;
+}
+
+#registration-form .form-group {
+    margin-bottom : 15px;
+}
+
+#registration-form input, 
+#registration-form select, 
+#registration-form textarea {
+    border : 1px solid;
+}
+
+#registration-form .input-group .input-group-addon {
+    border : 1px solid;
+    border-left : 0px;
+    background-color : #76CCE7;
+    width : 24px;
+}
+
+#registration-form .form-label {
+    background-color : #76CCE7;
+    width : 100px;
+    height : 33px;
+    font-weight : bold;
+}
+
+p#registration-header {
+    padding : 8px 20px;
+    font-weight: bold;
+    font-size : 22px;
+}
+
+#registration-form #registration-category .input-group-addon {
+    display:none;
+}
+
+#registration-title {
+    width: 700px;
+}
+
+#registration-title-count {
+    display : inline-block;
+    float:right;
+    margin-top : 7px;
+    text-align : right;
+    vertical-align : middle;
+    font-weight : bold;
+}
+
+div#poster-file input[type="file"] {
+    background-color : #ffffff;
+    border : 0px;
+    padding : 0px;
+    height : 22px;
+    padding : 5px;
+}
+
+#registration-submit {
+    float : right;
+    margin-right : 5%;
+    height : 33px;
+    width : 125px;
+    background-color : #76CCE7;
+    padding: 4px 15px;
+    font-weight : bold;
+    font-size : 16px;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    #registration-form select {
+        -webkit-appearance: none;
+        -webkit-border-radius: 0px;
+    }
+
+    #registration-form #registration-category .input-group-addon {
+        position : relative;
+        left : -34px;
+        border-left: 1px solid;
+        display : table-cell;
+        width : 24px;
+        background : url("http://sparcs.org/media/images/developer_color_vertical.png") no-repeat 0 0;
+        background-size : 33px 33px;
+    }
+}
+

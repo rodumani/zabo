@@ -2,7 +2,9 @@
 {
     display:inline-block;
     width:100%;
+    height:196px;
     border:2px solid #95D3CE;
+    background-color:#f0f0f0;
     margin-bottom:15px;
 }
 
@@ -10,12 +12,25 @@
 {
     float:left;
     width:225px;
+    height:inherit;
+    line-height:196px;
+    text-align:center;
+    font-size:0;
+}
+
+#club_picture img
+{
+    display:inline-block;
+    max-height:196px;
+    max-width:200px;
 }
 
 #club_right
 {
+    position:relative;
     float:right;
     width:799px;
+    height:inherit
 }
 
 #club_title
@@ -24,4 +39,30 @@
     border-bottom:2px solid #95D3CE;
     margin:0px 20px 15px 0px;
     font-weight:bold;
+}
+
+#club_content
+{
+    width:720px;
+    height:111px;
+    font-size:12pt;
+    overflow:hidden;
+    word-wrap:break-word;
+}
+
+#club_content_edit
+{
+    width:720px;
+    height:111px;
+    font-size:12pt;
+}
+
+#club_right img
+{
+    position:absolute;
+    width:35px;
+    height:35px;
+    right:0;
+    bottom:0;
+    margin:0 20px 15px 0;
 }

@@ -18,42 +18,42 @@
 				</a>
 			</div>
 			<div class="bar"></div>
-			<div class="menu" id="newbie">
+			<div class="menu" id="category">
 				<div class="category">
-					<a href="/">신입생 모집</a>
+					<a href="/">{{current_category|default:"카테고리"}}</a>
 				</div>
 				<div class="subcategory">
-					<div><a href="/">category1</a></div>
-					<div><a href="/">category2</a></div>
+					{% for u, c in choices %}
+					<div><a href="/category/{{u}}/">{{c}}</a></div>
+					{% endfor %}
 				</div>
 			</div>
 			<div class="bar"></div>
-			<div class="menu" id="perform">
+			<div class="menu" id="sitemap">
 				<div class="category">
-					<a href="/">동아리 공연</a>
+					<a href="/">사이트맵</a>
 				</div>
 				<div class="subcategory">
-					<div><a href="/">category1</a></div>
-					<div><a href="/">category2</a></div>
 				</div>
 			</div>
 			<div class="bar"></div>
-			<div class="menu" id="temp">
-				<div class="category">
-					<a href="/">얘도 카테고리</a>
+			{% if user.is_authenticated %}
+			<div class="logio">
+				<div id="account_profile">
+					<img src="{{MEDIA_URL}}{{ user.profile.profile_image }}" />
 				</div>
-				<div class="subcategory">
-					<div><a href="/">category1</a></div>
-					<div><a href="/">category2</a></div>
+				<div id="account_action">
+					<div id="arrow"></div>
+					<div class="account_menu" id="account_name">{{ user.profile.club_name_en}} 님</div>
+					<div class="account_menu"><a href="/registration/">새로운 글쓰기</a></div>
+					<div class="account_menu"><a href="/logout/">LOGOUT</a></div>
 				</div>
 			</div>
-			<div class="bar"></div>
+			{% else %}
 			<div class="logio" id="login">
-				<a href="/login/">Login</a>
+				<a href="/login/">LOGIN</a>
 			</div>
-			<div class="logio" id="logout" style="display:none">
-				<a href="/logout/">Logout</a>
-			</div>
+			{% endif%}
 			<div id="search">
 				<form id="search" action="/search/">
 					<input id="query" name="query">
@@ -64,6 +64,8 @@
 				</form>
 			</div>
 		</div>
+		{% block modalview %}
+		{% endblock %}
 		{% block club_info %}
 		{% endblock %}
 		<div id="content">
