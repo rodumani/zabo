@@ -86,7 +86,7 @@
 }
 
 #mainPicture{
-    height: 300px;
+    height: 60%;
     display: block;
     margin: auto;
 }
@@ -97,10 +97,13 @@
     margin-top: 10px;
 }
 
-.subPicture{
-    height: 200px;
+.crop{
     margin-left: 10px;
     margin-right: 10px;
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    float: left;
 }
 
 .poster

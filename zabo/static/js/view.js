@@ -7,9 +7,8 @@ function openModal(article_id){
 			article_id : article_id,
 		},
 		success: function(obj){
-			console.log(obj);
 			$("#subPictures").empty();
-			$("#mainPicture").removeAttr();
+			$("#mainPicture").removeAttr("style");
 			$("#mainPicture").attr("src", obj.main_picture.url);
 			$("#mainPicture").removeClass();
 			if(obj.sub_pictures.length == 0){
@@ -21,7 +20,17 @@ function openModal(article_id){
 			}
 			else{
 				for(i=0;i<obj.sub_pictures.length;i++){
-					$("#subPictures").append('<img src="'+obj.sub_pictures[i].url+'"class=subPicture>');
+					$("#subPictures").append('<div class="crop"><img src="'+obj.sub_pictures[i].url+'"></div>');
+					$(".crop > img").load(function(){
+						var height=$(this).height();
+						var width=$(this).width();
+						if(height<=width){
+							$(this).css({"height":"150px","margin-left":(75-width*75/height)+"px"});
+						}
+						else{
+							$(this).css({"width":"150px","margin-top":(75-height*75/width)+"px"});
+						}
+					});
 				}
 			}
 			$("#modalTitle").text('['+obj.category+'] '+obj.title);
