@@ -34,7 +34,7 @@ class Article(models.Model):
                 'file' : os.path.basename(self.main_poster.picture.name),
                 'url' : self.main_poster.picture.url 
                 },    
-            'sub_pictrues' : sub_pictures,
+            'sub_pictures' : sub_pictures,
             'start_time' : str(self.start_datetime.date()),
             'end_time' : str(self.end_datetime.date()),
             'comment' : self.comment

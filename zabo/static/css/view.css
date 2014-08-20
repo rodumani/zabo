@@ -74,8 +74,9 @@
     background: #000;
     height: 520px;
     margin-top: 40px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
 }
 
 #modalContent{
@@ -85,16 +86,25 @@
 }
 
 #mainPicture{
-    max-height: 300px;
+    height: 350px;
     display: block;
     margin: auto;
+    max-width: 90%;
 }
 
-.subPicture{
-    margin-top: 10px;
-    max-height: 200px;
-    margin-left: 43px;
-    margin-right: 43px;
+#subPictures{
+    display: inline-block;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.crop{
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    float: left;
 }
 
 .poster
@@ -121,8 +131,6 @@
     visibility: hidden;
 }
 
-
-
 .hover 
 {
     position:absolute;
@@ -136,4 +144,15 @@
     white-space: nowrap;
     width: 100%;
     text-align: right;
+}
+
+.largeHeightPicture
+{
+    margin-top: 8% !important;
+    height: 80% !important;
+}
+
+.largeWidthPicture{
+    width: 90%;
+    height: auto !important;
 }
