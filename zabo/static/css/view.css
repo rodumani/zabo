@@ -74,8 +74,8 @@
     background: #000;
     height: 520px;
     margin-top: 40px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     text-align: center;
 }
 
@@ -86,15 +86,16 @@
 }
 
 #mainPicture{
-    height: 60%;
+    height: 350px;
     display: block;
     margin: auto;
+    max-width: 90%;
 }
 
 #subPictures{
     display: inline-block;
     margin: auto;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .crop{
