@@ -42,3 +42,15 @@ function openModal(article_id){
 	});
 };
 
+$(document).ready(function() {
+	var modal = $('#modalOpen');
+	modal.click(function(e) {
+		if (e.target !== modal[0]) {
+			return false;
+		}
+		else {
+			window.location.href="#modalClose";
+			return true;
+		}
+	});
+});
