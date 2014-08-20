@@ -157,15 +157,78 @@ form#search *
 .logio
 {
     float:right;
+    width:75px;
     height:inherit;
+    text-align:center;
 }
 
 .logio > a
 {
-    padding:0px 15px;
+    display:inline-block;
     color:#FABC35;
     font-weight:bold;
     line-height:50px;
+}
+
+#account_profile
+{
+    display:inline-block;
+    width:36px;
+    height:36px;
+    margin:7px 0px;
+    background-color:#ffffff;
+}
+
+#account_profile img
+{
+    width:inherit;
+}
+
+#account_action
+{
+    display:none;
+    position:relative;
+    float:right;
+    margin:-7px 20px 0px 0px;
+    width:135px;
+    z-index:1;
+}
+
+#arrow
+{
+    width:0;
+    height:0;
+    margin-left:110px;
+    border-left:7px solid transparent;
+    border-right:7px solid transparent;
+    border-bottom:7px solid #FABC35;
+}
+
+.account_menu
+{
+    height:27px;
+    line-height:27px;
+    padding-right:3px;
+    background-color:#ffffff;
+    text-align:right;
+    font-size:10pt;
+    font-weight:bold;
+}
+
+.account_menu a
+{
+    display:block;
+    color:#000000;
+}
+
+#account_name
+{
+    background-color:#FABC35;
+}
+
+#account_name + .account_menu
+{
+    border-bottom:1px solid #bbbbbb;
 }
 
 #content

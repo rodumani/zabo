@@ -12,5 +12,10 @@ function applyEvent(id) {
 $(document).ready(function(){
 	applyEvent("#category");
 	applyEvent("#sitemap");
-	applyEvent("#write");
+	$(".logio").mouseenter(function(){
+		$("#account_action").show();
+	});
+	$(".logio").mouseleave(function(){
+		$("#account_action").hide();
+	});
 });
