@@ -184,6 +184,19 @@ form#search *
     width:inherit;
 }
 
+.account-profile
+{
+    display:inline-block;
+    width:30px;
+    height:30px;
+    background-color:#ffffff;
+}
+
+#account-link
+{
+    padding:10px;
+}
+
 #account_action
 {
     display:none;
@@ -235,4 +248,19 @@ form#search *
 {
     float:left;
     width:inherit;
+    margin-top:55px;
+    margin-left:auto;
+    margin-right:auto;
+
+}
+
+.dropdown-hover:hover .dropdown-menu 
+{
+    display: block;
+}
+
+.navbar-right
+{
+    margin-left:10px;
+    margin-right:5px;
 }

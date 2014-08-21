@@ -110,8 +110,12 @@
 .poster
 {
     float:left;
-    height:180px;
+    max-height:300px;
     position:relative;
+}
+
+.poster img{
+    max-height:300px;
 }
 
 .poster:hover .hover_div
