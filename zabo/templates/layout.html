@@ -3,6 +3,7 @@
     <head>
         <title>Zabo</title>
         <meta charset="utf-8"/>
+        <meta name="viewport" content="initial-scale=1.0,width=device-width,user-scalable=no" />
         <script src="{{STATIC_URL}}js/jquery/jquery-1.11.1.min.js"></script>
         <script src="{{STATIC_URL}}js/layout.js"></script>
         <script src="{{STATIC_URL}}js/shortcuts.js"></script>
@@ -10,6 +11,8 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/layout.css">
+        <script type="text/javascript" src="{{STATIC_URL}}js/freewall.js"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}js/endless-pagination.js"></script>
         {% block header %}
         {% endblock %}
     </head>
@@ -71,15 +74,51 @@
                     </form>
                 </div><!--/.nav-collapse -->
             </div>
+        </div>
+        <div class="container" id="content">
+            <div id="freewall">
+            {% block content %}
+            {% endblock %}
+            </div>
             {% block modalview %}
             {% endblock %}
             {% block club_info %}
             {% endblock %}
         </div>
-        <div class="container" id="content">
-            {% block content %}
-            {% endblock %}
-        </div>
+        <script type="text/javascript">
+            function fitWidth(){
+                var wall = new freewall("#freewall");
+                wall.reset({
+                        selector: '.poster',
+                        animate: true,
+                        cache: true,
+                        cellW: 300,
+                        cellH: 'auto',
+                        gutterX: 20,
+                        onResize: function() {
+                                wall.fitWidth();
+                        }
+                });
+
+                var images = wall.container.find('.poster');
+                images.find('img').load(function() {
+                        wall.fitWidth();
+                });
+            }
+            $(document).ready(function(){
+                $(this).scrollTop(0);
+            });
+            $(function(){
+                fitWidth();
+                $.endlessPaginate({
+                    paginateOnScroll: true,
+                    paginateScrollMargin: 500,
+                    onCompleted: function(context, fragment) {
+                        fitWidth();
+                    }
+                });
+            });
+        </script>
     </body>
 </html>
 

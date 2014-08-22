@@ -66,34 +66,10 @@ def get_ctx(articles):
         return context in redirect
         articles : want to show articles
     """
-
     all = []
-    l = []
-    length = 0
-    minimum = MAX_WIDTH
     for article in articles:
         picture = article.main_poster.picture
-        new_width = MAX_HEIGHT * picture.width / picture.height
-        if length + new_width > MAX_WIDTH:
-            space = determine_space(len(l), length)
-            minimum = min(minimum, space[0])
-            line = []
-            for i in range(len(l)): # determine the margin
-                line.append([l[i][0], l[i][1], l[i][2], space[i]])
-            all.append(line)
-            l = []
-            length = 0
-        l.append((picture.url, article.writer, article.id))
-        length += new_width
-
-    if length != 0:
-        line = []
-        for i in range(len(l)):
-            if i == len(l) - 1:
-                line.append([l[i][0], l[i][1], l[i][2], 0])
-            else:
-                line.append([l[i][0], l[i][1], l[i][2], minimum])
-        all.append(line)
+        all.append([picture,article.writer,article.id])
 
     page_template = 'board/view_page.html'
     ctx = {'chosen':all,

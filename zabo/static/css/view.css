@@ -110,12 +110,11 @@
 .poster
 {
     float:left;
-    max-height:300px;
     position:relative;
 }
 
 .poster img{
-    max-height:300px;
+    
 }
 
 .poster:hover .hover_div
@@ -156,7 +155,13 @@
     height: 80% !important;
 }
 
-.largeWidthPicture{
+.largeWidthPicture
+{
     width: 90%;
     height: auto !important;
+}
+
+.endless_container
+{
+    display:none;
 }
